@@ -1,4 +1,3 @@
-// Contents of script.js
 function toggleReadMore(id) {
     var content = document.getElementById(id);
     if (content.style.display === "none") {

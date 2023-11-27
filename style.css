@@ -1,1 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.navbar{
+    
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    padding: 25px 0;
+    transition: all 0.35s ease;
+    
+}
+.center{
+    text-align: center;
+    padding-bottom: 15px;
+    color:#fff
+}
+
+.navbar.sticky{
+    background: #222;
+    padding: 10px 0;
+}
+
+.navbar .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+
+.content{
+    max-width: 1250px;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.navbar .logo a{
+    color:#ffc000;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+
+.navbar .menu-list{
+    display: inline-flex;
+
+}
+.menu-list li {
+    list-style: none;
+}
+
+.menu-list li a{
+    color:#fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+
+}
+
+.menu-list li a:hover{
+    color: #ffc000;
+}
+
+.icon{
+    color:#fff;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: none;
+}
+.icon.cancel-btn{
+    position: absolute;
+    right: 30px;
+    top:20px;
+}
+
+.banner{
+    height: 100vh;
+    background:  url("images/ban.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}
+.banner_text{
+    font-family: sans-serif;
+    font-size: 75px;
+    font-weight: bolder;
+    color: white;
+    /*text-shadow: 0 0 3px #fff, 0 0 5px #ffc000;*/
+    position: absolute;
+    top:65vh;
+    
+    
+    
+    
+}
+.ban_img{
+    display: flex;
+    justify-content: center;
+}
+
+.home_img{
+    height: 30vh;
+    margin-top: -70vh;
+
+
+}
+.sub_text{
+    font-family: cursive;
+    font-size: 35px;
+    color: white;
+    /*text-shadow: 0 0 3px #fff, 0 0 5px #ffc000;*/
+    position: absolute;
+    top:82vh;
+}
 

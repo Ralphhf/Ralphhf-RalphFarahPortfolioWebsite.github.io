@@ -166,6 +166,7 @@ footer nav {
   }
   .title {
     font-size: 2rem;
+    text-align:center
   }
   .text-container {
     text-align: justify;

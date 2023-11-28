@@ -88,9 +88,11 @@ contactt {
 .email-icon {
   height: 2.5rem;
 }
-.linkedin-icon{
-  height : 2.5rem;
+.linkedin-icon {
+  width: 30px; /* Adjust this value as needed to make the icon smaller */
+  height: auto; /* This ensures the icon maintains its aspect ratio */
 }
+
 /* FOOTER SECTION */
 
 footer {

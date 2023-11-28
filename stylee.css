@@ -52,7 +52,9 @@ body, html {
 }
 
 /* CONTACT */
-
+.section__text__p1 {
+  text-align: center;
+}
 #contactt {
   display: flex;
   justify-content: center;

@@ -57,6 +57,7 @@ body, html {
 }
 #contactt {
   display: flex;
+  text-align: center;
   justify-content: center;
   flex-direction: column;
   height: 70vh;

@@ -180,6 +180,12 @@ footer nav {
   .section__text__p2 {
     font-size: 1.25rem;
   }
+    .banner-section {
+    background: url('Backgroundimage.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
   .title {
     font-size: 3rem;
     text-align:center

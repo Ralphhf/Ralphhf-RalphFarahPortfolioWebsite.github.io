@@ -6,6 +6,9 @@ body, html {
   background: url('Backgroundimage.jpg') no-repeat center center fixed; 
   background-size: cover;
 }
+foot {
+  background-image: none; /* Remove the background image from the entire site */
+}
 
 .navbar {
   display: flex;

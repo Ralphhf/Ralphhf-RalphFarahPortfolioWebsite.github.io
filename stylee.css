@@ -165,6 +165,15 @@ footer nav {
     height: 46vw;
     justify-content: center;
   }
+   #custom-background-section {
+    background-color: #f0f0f0; /* A light gray background, change as needed */
+    /* For a background image, uncomment and use the following line */
+    /* background-image: url('path_to_your_background_image.jpg'); */
+    background-size: cover; /* Ensures the background image covers the entire section */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    padding: 20px; /* Add some padding around the content */
+    margin: 20px 0; /* Add some margin for spacing from other elements */
+}
   .section__text__p2 {
     font-size: 1.25rem;
   }

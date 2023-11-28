@@ -50,6 +50,24 @@ body, html {
   margin: 0;
   font-size: 24px; /* Increased font size for Data Analysis & Web Development */
 }
+.nav-links-container {
+  text-align: center; /* Center-aligns the content */
+}
+
+.nav-links {
+  display: inline-block; /* Allows the list to be centered as a whole */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+.nav-links li {
+  display: inline; /* Displays list items in a line */
+  margin-right: 20px; /* Adds spacing between the items, adjust as needed */
+}
+
+.nav-links li:last-child {
+  margin-right: 0; /* Removes the margin from the last item */
+}
 
 /* CONTACT */
 .section__text__p1 {

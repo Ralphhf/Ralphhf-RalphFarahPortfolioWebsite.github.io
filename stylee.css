@@ -1,0 +1,52 @@
+/* stylee.css file */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: url('Backgroundimage.jpg') no-repeat center center fixed; 
+  background-size: cover;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  color: white;
+}
+
+.profile-pic {
+  width: 250px;  
+  height: 250px; 
+  background: url('Mypicture.JPG') no-repeat center center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 5px solid black;
+  margin: 0 auto 20px;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: 36px; /* Increased font size for Ralph Farah */
+}
+
+.content p {
+  margin: 0;
+  font-size: 24px; /* Increased font size for Data Analysis & Web Development */
+}

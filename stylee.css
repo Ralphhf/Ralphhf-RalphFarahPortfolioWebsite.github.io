@@ -73,22 +73,16 @@ foot {
 }
 
 /* CONTACT */
-.section__text__p1 {
-  text-align: center;
+/* CONTACT */
 
-}
-#contactt {
+#contact {
   display: flex;
   justify-content: center;
   flex-direction: column;
   height: 70vh;
 }
-#contactt,
-  footer {
-    height: 40vh;
 
-.contactt-info-upper-container {
-  text-align: center;
+.contact-info-upper-container {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
@@ -99,8 +93,7 @@ foot {
   padding: 0.5rem;
 }
 
-.contactt-info-container {
-  text-align: center;
+.contact-info-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,19 +101,15 @@ foot {
   margin: 1rem;
 }
 
-.contactt-info-container p {
+.contact-info-container p {
   font-size: larger;
-  text-align: center;
 }
 
-.contactt-icon {
+.contact-icon {
   cursor: default;
 }
 
 .email-icon {
-  height: 2.5rem;
-}
-.linkedin-icon {
   height: 2.5rem;
 }
 
@@ -135,20 +124,80 @@ footer p {
   text-align: center;
 }
 
+@media screen and (max-width: 1400px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+  .about-containers {
+    flex-wrap: wrap;
+  }
+  #contact,
+  #projects {
+    height: fit-content;
+  }
+}
 
-footer nav {
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+  #hamburger-nav {
+    display: flex;
+  }
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+  #profile,
+  .section-container {
+    display: block;
+  }
+  .arrow {
+    display: none;
+  }
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  section {
+    margin: 0 5%;
+  }
+  .section__pic-container {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+  article {
+    font-size: 1rem;
+  }
+  footer nav {
     height: fit-content;
     margin-bottom: 2rem;
   }
   .about-containers,
-  .contactt-info-upper-container,
+  .contact-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
   }
-  .contactt-info-container {
+  .contact-info-container {
     margin: 0;
   }
-  .contactt-info-container p,
+  .contact-info-container p,
   .nav-links li a {
     font-size: 1rem;
   }
@@ -168,31 +217,13 @@ footer nav {
     height: 46vw;
     justify-content: center;
   }
-   #custom-background-section {
-    background-color: white; /* A light gray background, change as needed */
-    /* For a background image, uncomment and use the following line */
-    /* background-image: url('path_to_your_background_image.jpg'); */
-    background-size: cover; /* Ensures the background image covers the entire section */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
-    padding: 20px; /* Add some padding around the content */
-    margin: 20px 0; /* Add some margin for spacing from other elements */
-}
   .section__text__p2 {
     font-size: 1.25rem;
   }
-    .banner-section {
-    background: url('Backgroundimage.jpg') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-}
-
   .title {
-    font-size: 3rem;
-    text-align:center
+    font-size: 2rem;
   }
   .text-container {
     text-align: justify;
   }
-footer {
-  background-image: none; /* Remove the background image from the entire site */
 }

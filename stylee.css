@@ -6,9 +6,7 @@ body, html {
   background: url('Backgroundimage.jpg') no-repeat center center fixed; 
   background-size: cover;
 }
-foot {
-  background-image: none; /* Remove the background image from the entire site */
-}
+
 
 .navbar {
   display: flex;
@@ -174,7 +172,7 @@ footer p {
 }
 
 @media screen and (max-width: 600px) {
-  #contact,
+  #contactt,
   footer {
     height: 40vh;
   }
@@ -190,14 +188,14 @@ footer p {
     margin-bottom: 2rem;
   }
   .about-containers,
-  .contact-info-upper-container,
+  .contactt-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
   }
-  .contact-info-container {
+  .contactt-info-container {
     margin: 0;
   }
-  .contact-info-container p,
+  .contactt-info-container p,
   .nav-links li a {
     font-size: 1rem;
   }

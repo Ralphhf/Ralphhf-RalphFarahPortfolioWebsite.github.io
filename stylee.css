@@ -51,7 +51,7 @@ body, html {
   font-size: 24px; /* Increased font size for Data Analysis & Web Development */
 }
 
-contactt {
+#contactt {
   display: flex;
   justify-content: center;
   flex-direction: column;

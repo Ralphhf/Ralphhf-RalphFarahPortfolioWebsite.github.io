@@ -64,6 +64,7 @@ body, html {
 }
 
 .contactt-info-upper-container {
+  text-align: center;
   display: flex;
   justify-content: center;
   border-radius: 2rem;
@@ -75,6 +76,7 @@ body, html {
 }
 
 .contactt-info-container {
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,6 +86,7 @@ body, html {
 
 .contactt-info-container p {
   font-size: larger;
+  text-align: center;
 }
 
 .contactt-icon {

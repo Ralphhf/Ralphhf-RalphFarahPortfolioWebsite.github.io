@@ -166,7 +166,7 @@ footer nav {
     justify-content: center;
   }
    #custom-background-section {
-    background-color: #f0f0f0; /* A light gray background, change as needed */
+    background-color: white; /* A light gray background, change as needed */
     /* For a background image, uncomment and use the following line */
     /* background-image: url('path_to_your_background_image.jpg'); */
     background-size: cover; /* Ensures the background image covers the entire section */

@@ -35,13 +35,30 @@ body, html {
 }
 
 .profile-pic {
-  width: 250px;  
-  height: 250px; 
+  width: 25vw; /* Adjust based on container size and preference */
+  height: 25vw; /* Keep this the same as width to maintain aspect ratio */
   background: url('Mypicture.JPG') no-repeat center center;
   background-size: cover;
   border-radius: 50%;
   border: 5px solid black;
   margin: 0 auto 20px;
+
+  /* Ensure the profile picture is not too big or too small */
+  max-width: 250px;
+  max-height: 250px;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-pic {
+    width: 40vw;
+    height: 40vw;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 120px;
+    min-height: 120px;
+  }
 }
 
 .content h1 {

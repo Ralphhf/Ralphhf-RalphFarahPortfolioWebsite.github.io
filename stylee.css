@@ -205,7 +205,7 @@ nav {
 }
 .contactme {
     text-align: center; /* Centers the text horizontally */
-    font-size: 60px; /* Adjust this value to increase or decrease the font size */
+    font-size: 40px; /* Adjust this value to increase or decrease the font size */
     width: 100%; /* Ensures the element spans the full width for centering */
     margin: 0 auto; /* Adds automatic margin to center the block if needed */
     font-weight:bold;

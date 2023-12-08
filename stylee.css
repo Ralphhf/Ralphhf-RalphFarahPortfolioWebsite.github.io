@@ -41,7 +41,7 @@ body, html {
   width: 50%;  /* Adjust the percentage based on container size */
   height: auto;
   aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio */
-  background: url('Mypicture.JPG') no-repeat center center;
+  background: url('Mypicture.jpg') no-repeat center center;
   background-size: cover;
   border-radius: 50%;
   border: 5px solid black;

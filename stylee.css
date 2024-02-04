@@ -9,12 +9,18 @@ body, html {
 }
 * {
   box-sizing: border-box;
+
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 
 
 .navbar {
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
   justify-content: center;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -24,8 +30,9 @@ body, html {
   color: white;
   padding: 14px 20px;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 10px; /* Add margin to top and bottom for wrapped items */
 }
+
 
 .content {
   position: absolute;
@@ -35,12 +42,14 @@ body, html {
   text-align: center;
   z-index: 10;
   color: white;
+  max-width: 90%;
+  margin: auto;
 }
 
 .profile-pic {
-  width: 50%;  /* Adjust the percentage based on container size */
+  width: 50%;
   height: auto;
-  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio */
+  aspect-ratio: 1 / 1;
   background: url('Mypicture.jpg') no-repeat center center;
   background-size: cover;
   border-radius: 50%;
@@ -48,11 +57,15 @@ body, html {
   margin: 0 auto 20px;
 }
 
+
 @media screen and (max-width: 768px) {
   .profile-pic {
-    width: 70%; /* Increase size for smaller screens if needed */
+    width: 70%; /* Adjust for smaller screens */
   }
 }
+
+
+
 
 
 .content h1 {

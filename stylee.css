@@ -1,5 +1,9 @@
 /* stylee.css file */
-body, html {
+html {
+  height: 100%;
+  /* Other html styles if needed */
+}
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -10,6 +14,7 @@ body, html {
   -moz-background-size: cover; /* For Firefox */
   -webkit-background-size: cover; /* For Chrome and Safari */
 }
+
 
 
 * {

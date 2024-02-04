@@ -28,14 +28,14 @@ body, html {
 }
 
 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 10;
   color: white;
+  max-width: 90%; /* Prevents the content from getting too wide on larger screens */
+  padding: 20px; /* Adds some padding inside the content */
+  box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+  /* Remove position, top, left, transform, and z-index properties */
 }
+
 
 .profile-pic {
   width: 50%;  /* Adjust the percentage based on container size */

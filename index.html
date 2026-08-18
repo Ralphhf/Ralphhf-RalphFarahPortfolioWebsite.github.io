@@ -528,6 +528,8 @@ footer{
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
 </style>
+
+<noscript><style>.rv{opacity:1;transform:none;}</style></noscript>
 </head>
 <body>
 
@@ -570,15 +572,15 @@ footer{
     </div>
 
     <div class="flow" role="img" aria-label="Pipeline: source files, stage with stored procedure, SSIS data flow, warehouse table, then SSRS and Power BI.">
-      <span class="node" data-node="0"><span class="n">01</span>XLSX / TXT</span>
-      <span class="arrow" data-arrow="0"></span>
-      <span class="node" data-node="1"><span class="n">02</span>STAGE &middot; SP</span>
-      <span class="arrow" data-arrow="1"></span>
-      <span class="node" data-node="2"><span class="n">03</span>SSIS DATA FLOW</span>
-      <span class="arrow" data-arrow="2"></span>
-      <span class="node" data-node="3"><span class="n">04</span>WAREHOUSE</span>
-      <span class="arrow" data-arrow="3"></span>
-      <span class="node" data-node="4"><span class="n">05</span>SSRS / POWER BI</span>
+      <span class="node on" data-node="0"><span class="n">01</span>XLSX / TXT</span>
+      <span class="arrow on" data-arrow="0"></span>
+      <span class="node on" data-node="1"><span class="n">02</span>STAGE &middot; SP</span>
+      <span class="arrow on" data-arrow="1"></span>
+      <span class="node on" data-node="2"><span class="n">03</span>SSIS DATA FLOW</span>
+      <span class="arrow on" data-arrow="2"></span>
+      <span class="node on" data-node="3"><span class="n">04</span>WAREHOUSE</span>
+      <span class="arrow on" data-arrow="3"></span>
+      <span class="node on" data-node="4"><span class="n">05</span>SSRS / POWER BI</span>
     </div>
 
     <div class="ledger">
@@ -587,29 +589,29 @@ footer{
       </div>
       <div class="lrow" data-check data-value="142860" data-dec="0">
         <span class="lbl">ROW_COUNT</span>
-        <span class="num src">0</span><span class="num dst">0</span>
-        <span class="res">&middot;&middot;&middot;</span>
+        <span class="num src">142,860</span><span class="num dst">142,860</span>
+        <span class="res ok">✓ MATCH</span>
       </div>
       <div class="lrow" data-check data-value="48213904.22" data-dec="2">
         <span class="lbl">SUM(WRITTEN_PREM)</span>
-        <span class="num src">0</span><span class="num dst">0</span>
-        <span class="res">&middot;&middot;&middot;</span>
+        <span class="num src">48,213,904.22</span><span class="num dst">48,213,904.22</span>
+        <span class="res ok">✓ MATCH</span>
       </div>
       <div class="lrow" data-check data-value="11704556.08" data-dec="2">
         <span class="lbl">SUM(PAID_LOSS)</span>
-        <span class="num src">0</span><span class="num dst">0</span>
-        <span class="res">&middot;&middot;&middot;</span>
+        <span class="num src">11,704,556.08</span><span class="num dst">11,704,556.08</span>
+        <span class="res ok">✓ MATCH</span>
       </div>
       <div class="lrow" data-check data-value="9431" data-dec="0">
         <span class="lbl">DISTINCT(POLICY_NO)</span>
-        <span class="num src">0</span><span class="num dst">0</span>
-        <span class="res">&middot;&middot;&middot;</span>
+        <span class="num src">9,431</span><span class="num dst">9,431</span>
+        <span class="res ok">✓ MATCH</span>
       </div>
     </div>
 
     <div class="panel-foot">
-      <span>Files processed <b id="fileCount">0</b> &middot; Foreach Loop container</span>
-      <span class="stamp" id="stamp">Running</span>
+      <span>Files processed <b id="fileCount">12</b> &middot; Foreach Loop container</span>
+      <span class="stamp ok" id="stamp">✓ Succeeded</span>
     </div>
   </div>
   <p class="note">Illustrative figures — the shape of a real load, not client data.</p>
@@ -976,7 +978,23 @@ footer{
     }, delay);
   }
 
+  function reset(){
+    nodes.forEach(function(n){ n.classList.remove('on'); });
+    arrows.forEach(function(a){ a.classList.remove('on'); });
+    rows.forEach(function(r){
+      r.querySelector('.src').textContent = '0';
+      r.querySelector('.dst').textContent = '0';
+      var res = r.querySelector('.res');
+      res.textContent = '···';
+      res.classList.remove('ok');
+    });
+    fileEl.textContent = '0';
+    stamp.textContent = 'Running';
+    stamp.classList.remove('ok');
+  }
+
   function run(){
+    reset();
     nodes.forEach(function(n, i){
       setTimeout(function(){
         n.classList.add('on');

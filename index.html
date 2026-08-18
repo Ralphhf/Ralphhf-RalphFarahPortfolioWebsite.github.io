@@ -1,514 +1,1022 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ralph Farah — Business Intelligence Developer</title>
+<meta name="description" content="Ralph Farah — Business Intelligence Developer at W. R. Berkley. SSIS, T-SQL, SSRS, Power BI and DAX for a commercial insurance carrier, plus self-directed data and automation systems.">
+<meta name="theme-color" content="#0D1826">
+<meta property="og:title" content="Ralph Farah — Business Intelligence Developer">
+<meta property="og:description" content="SSIS, T-SQL, SSRS and Power BI for a commercial insurance carrier — plus a shelf of self-directed data and automation systems.">
+<meta property="og:type" content="website">
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#000000"><meta name="description" content="Ralph Farah Portfolio"><link rel="stylesheet" href="tailwind.css"><title>Ralph Farah Portfolio</title>
-  <style> .pyxlA {text-align: center;} .top-panel, .bottom-panel {position: fixed;left: 0;width: 100%;height: 10vh;background-color: rgba(0, 0, 0, 0.5);padding: 10px;color: #fff;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);z-index: 9999;display: flex;align-items: center;justify-content: center;}.top-panel {top: 0;}.bottom-panel {bottom: 0;}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
+<style>
+:root{
+  --ink:#0D1826;
+  --ink-2:#111F31;
+  --ink-3:#16283E;
+  --line:rgba(233,238,245,.11);
+  --line-2:rgba(233,238,245,.20);
+  --paper:#E9EEF5;
+  --mute:#8A9CB4;
+  --gold:#D9A441;
+  --tie:#62B98D;
+
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+
+  --pad:clamp(20px,5vw,72px);
+  --maxw:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+
+::selection{background:var(--gold);color:var(--ink);}
+
+:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+
+/* ---------- ledger rule: the structural device ---------- */
+.rule{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  border-bottom:1px solid var(--line-2);
+  padding-bottom:10px;
+  margin-bottom:34px;
+}
+.rule .tag{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  color:var(--gold);
+  white-space:nowrap;
+}
+.rule .spacer{flex:1;}
+.rule .meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  color:var(--mute);
+  text-align:right;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,24,38,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  max-width:var(--maxw);margin:0 auto;
+  padding:0 var(--pad);
+  height:62px;
+  display:flex;align-items:center;gap:28px;
+}
+.mark{
+  font-family:var(--mono);
+  font-size:12px;font-weight:600;
+  letter-spacing:.2em;
+  color:var(--paper);
+  text-decoration:none;
+  padding:5px 9px;
+  border:1px solid var(--line-2);
+}
+.mark:hover{border-color:var(--gold);color:var(--gold);}
+.nav-links{margin-left:auto;display:flex;gap:26px;align-items:center;}
+.nav-links a{
+  font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--paper);}
+.nav-cta{
+  font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold)!important;
+  border:1px solid var(--gold);
+  padding:6px 13px;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)!important;}
+@media(max-width:820px){
+  .nav-in{gap:14px;}
+  .nav-links{gap:16px;}
+  .nav-links a{font-size:10.5px;letter-spacing:.11em;}
+  .nav-cta{padding:6px 10px;}
+  .nav-links a[href="#stack"],
+  .nav-links a[href="#about"]{display:none;}
+}
+@media(max-width:460px){
+  .nav-links a[href="#work"]{display:none;}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(48px,9vw,104px) 0 clamp(40px,6vw,64px);}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mute);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-bottom:26px;
+}
+.eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--tie);
+  box-shadow:0 0 0 3px rgba(98,185,141,.16);
+  flex:none;
+}
+h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.35rem,6.4vw,4.6rem);
+  line-height:1.02;
+  letter-spacing:-.032em;
+  margin:0 0 26px;
+  max-width:15ch;
+}
+h1 em{
+  font-style:normal;
+  color:var(--gold);
+  position:relative;
+  white-space:nowrap;
+}
+h1 em::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:.06em;
+  height:3px;background:var(--gold);opacity:.32;
+}
+.lede{
+  max-width:58ch;
+  font-size:clamp(1rem,1.5vw,1.115rem);
+  color:#C3CEDC;
+  margin:0 0 34px;
+}
+.lede strong{color:var(--paper);font-weight:600;}
+
+/* ---------- tie-out panel (signature) ---------- */
+.panel{
+  border:1px solid var(--line-2);
+  background:linear-gradient(180deg,var(--ink-2),#0F1D2E);
+  font-family:var(--mono);
+  font-size:12.5px;
+  overflow:hidden;
+}
+.panel-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:11px 18px;
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.018);
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--mute);
+}
+.panel-head b{color:var(--paper);font-weight:500;}
+
+/* flow */
+.flow{
+  display:flex;align-items:center;gap:0;
+  padding:22px 18px 20px;
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;
+}
+.node{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 13px;
+  border:1px solid var(--line-2);
+  color:var(--mute);
+  white-space:nowrap;
+  font-size:11.5px;letter-spacing:.07em;
+  transition:color .45s,border-color .45s,background .45s;
+  flex:none;
+}
+.node .n{
+  font-size:10px;color:var(--gold);opacity:.55;transition:opacity .45s;
+}
+.node.on{
+  color:var(--paper);
+  border-color:rgba(217,164,65,.55);
+  background:rgba(217,164,65,.07);
+}
+.node.on .n{opacity:1;}
+.arrow{
+  flex:none;
+  width:clamp(16px,3vw,40px);
+  height:1px;background:var(--line-2);
+  position:relative;
+  transition:background .45s;
+}
+.arrow.on{background:rgba(217,164,65,.5);}
+.arrow::after{
+  content:"";position:absolute;right:0;top:-3px;
+  border-left:5px solid var(--line-2);
+  border-top:3.5px solid transparent;
+  border-bottom:3.5px solid transparent;
+  transition:border-left-color .45s;
+}
+.arrow.on::after{border-left-color:rgba(217,164,65,.5);}
+
+/* ledger */
+.ledger{padding:16px 18px 6px;}
+.lrow{
+  display:grid;
+  grid-template-columns:minmax(120px,1.4fr) 1fr 1fr 108px;
+  grid-template-areas:"lbl src dst res";
+  gap:10px;
+  padding:7px 0;
+  border-bottom:1px dotted rgba(233,238,245,.10);
+  align-items:baseline;
+}
+.lrow .lbl{grid-area:lbl;}
+.lrow .src{grid-area:src;}
+.lrow .dst{grid-area:dst;}
+.lrow .res{grid-area:res;}
+.lrow.head{
+  border-bottom:1px solid var(--line-2);
+  color:var(--mute);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  padding-bottom:9px;
+}
+.lrow .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--paper);}
+.lrow .lbl{color:var(--mute);letter-spacing:.04em;}
+.lrow .res{text-align:right;font-size:11px;letter-spacing:.13em;color:var(--mute);}
+.lrow .res.ok{color:var(--tie);}
+.panel-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:13px 18px;
+  border-top:1px solid var(--line);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);
+}
+.stamp{
+  color:var(--mute);
+  border:1px solid var(--line-2);
+  padding:4px 12px;
+  transition:color .4s,border-color .4s,background .4s;
+}
+.stamp.ok{
+  color:var(--tie);
+  border-color:rgba(98,185,141,.5);
+  background:rgba(98,185,141,.08);
+}
+/* ledger restacks so nothing collides on a phone */
+@media(max-width:640px){
+  .panel{font-size:11.5px;}
+  .panel-head{font-size:10px;letter-spacing:.11em;}
+  .panel-head span:last-child{display:none;}
+  .flow{padding:16px 14px;}
+  .node{padding:6px 10px;font-size:10.5px;}
+  .ledger{padding:14px 14px 4px;}
+  .lrow{
+    grid-template-columns:1fr 1fr auto;
+    grid-template-areas:
+      "lbl lbl lbl"
+      "src dst res";
+    gap:3px 10px;
+    padding:10px 0;
+  }
+  .lrow .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--gold);}
+  .lrow.head{display:none;}
+  .lrow .src::before{content:"SRC ";color:var(--mute);font-size:9.5px;letter-spacing:.1em;}
+  .lrow .dst::before{content:"DST ";color:var(--mute);font-size:9.5px;letter-spacing:.1em;}
+  .panel-foot{font-size:9.5px;letter-spacing:.1em;}
+}
+
+.note{
+  font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.08em;
+  color:#61728A;
+  margin-top:11px;
+}
+
+/* ---------- sections ---------- */
+section{padding:clamp(58px,8vw,96px) 0;}
+section + section{border-top:1px solid var(--line);}
+h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.6rem,3.4vw,2.4rem);
+  letter-spacing:-.022em;
+  line-height:1.12;
+  margin:0 0 14px;
+}
+.sec-lede{max-width:62ch;color:#B4C2D3;margin:0 0 38px;}
+
+/* ---------- work ---------- */
+.job{
+  padding:26px 0;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:clamp(18px,4vw,52px);
+}
+.job:last-child{border-bottom:1px solid var(--line);}
+.job-when{
+  font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.12em;
+  color:var(--mute);
+  text-transform:uppercase;
+  padding-top:5px;
+}
+.job-when .now{color:var(--gold);}
+.job h3{
+  font-family:var(--display);
+  font-weight:700;font-size:1.32rem;letter-spacing:-.015em;
+  margin:0 0 3px;
+}
+.job .co{
+  font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.job ul{margin:0;padding-left:17px;color:#B9C6D6;}
+.job li{margin-bottom:8px;}
+.job li::marker{color:var(--gold);}
+.job li:last-child{margin-bottom:0;}
+.job li b{color:var(--paper);font-weight:600;}
+@media(max-width:720px){
+  .job{grid-template-columns:1fr;gap:12px;}
+  .job-when{padding-top:0;}
+}
+
+/* ---------- stack ---------- */
+.stack{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(268px,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.sgroup{background:var(--ink);padding:24px 22px;}
+.sgroup h4{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);
+  margin:0 0 15px;
+  font-weight:500;
+}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chip{
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.03em;
+  color:#C2CEDD;
+  border:1px solid var(--line-2);
+  padding:4px 10px;
+  transition:border-color .2s,color .2s;
+}
+.chip:hover{border-color:var(--gold);color:var(--paper);}
+.chip.key{color:var(--paper);border-color:rgba(217,164,65,.42);background:rgba(217,164,65,.06);}
+
+/* ---------- builds ---------- */
+.builds{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.card{
+  background:var(--ink);
+  padding:26px 24px 24px;
+  display:flex;flex-direction:column;
+  transition:background .25s;
+}
+.card:hover{background:var(--ink-2);}
+.card-top{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-bottom:11px;
+}
+.card h3{
+  font-family:var(--display);
+  font-weight:700;font-size:1.16rem;letter-spacing:-.012em;
+  margin:0;
+}
+.status{
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mute);white-space:nowrap;padding-top:3px;
+}
+.status.live{color:var(--tie);}
+.card p{margin:0 0 16px;color:#B4C2D3;font-size:.945rem;flex:1;}
+.tech{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.08em;
+  color:#74879F;
+  border-top:1px dotted rgba(233,238,245,.12);
+  padding-top:13px;
+}
+.card-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  margin-top:11px;
+}
+.card-link:hover{text-decoration:underline;text-underline-offset:4px;}
+
+/* ---------- about ---------- */
+.about{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:clamp(24px,5vw,58px);
+  align-items:start;
+}
+.portrait{
+  border:1px solid var(--line-2);
+  filter:saturate(.72) contrast(1.03);
+}
+.about p{color:#B9C6D6;margin:0 0 17px;max-width:62ch;}
+.about p:last-of-type{margin-bottom:0;}
+.about strong{color:var(--paper);font-weight:600;}
+.facts{
+  margin-top:26px;
+  border-top:1px solid var(--line-2);
+}
+.fact{
+  display:flex;gap:16px;align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px dotted rgba(233,238,245,.12);
+  font-family:var(--mono);
+  font-size:12px;
+}
+.fact .k{
+  color:var(--gold);
+  letter-spacing:.14em;text-transform:uppercase;
+  font-size:10.5px;
+  min-width:112px;flex:none;
+}
+.fact .v{color:#C2CEDD;}
+@media(max-width:720px){
+  .about{grid-template-columns:1fr;}
+  .portrait{max-width:190px;}
+}
+
+/* ---------- contact ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);
+  margin-top:8px;
+}
+.cbox{
+  background:var(--ink);
+  padding:24px 22px;
+  text-decoration:none;
+  display:block;
+  transition:background .22s;
+}
+.cbox:hover{background:var(--ink-2);}
+.cbox .k{
+  font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);
+  display:block;margin-bottom:8px;
+}
+.cbox .v{
+  font-family:var(--body);
+  font-size:1rem;color:var(--paper);
+  word-break:break-word;
+}
+.cbox:hover .v{color:var(--gold);}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:26px 0 34px;
+}
+.foot-in{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:#5F7089;
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .62s ease,transform .62s ease;}
+.rv.in{opacity:1;transform:none;}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .rv{opacity:1;transform:none;transition:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#top" class="mark">RF</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#builds">Builds</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="RalphFarah-Resume.pdf" class="nav-cta" download>Résumé</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<header class="hero wrap">
+  <div class="eyebrow">
+    <span class="dot" aria-hidden="true"></span>
+    <span>Ralph Farah</span>
+    <span aria-hidden="true">/</span>
+    <span>Business Intelligence Developer</span>
+    <span aria-hidden="true">/</span>
+    <span>W. R. Berkley Corporation</span>
+  </div>
+
+  <h1>Every number on the report <em>ties back</em> to the file it came from.</h1>
+
+  <p class="lede">I build the reporting stack for a commercial insurance carrier &mdash; <strong>SSIS</strong> packages that load broker and policy files, <strong>T-SQL</strong> stored procedures that run the calculations before anything lands, <strong>SSRS</strong> reports finance and underwriting drive with their own parameters, and <strong>Power BI</strong> models on the same governed data. Between every source and every destination, there is a check.</p>
+
+  <!-- signature: the tie-out -->
+  <div class="panel" id="tieout">
+    <div class="panel-head">
+      <span>Package&nbsp; <b>LOAD_PREMIUM_MONTHLY.dtsx</b></span>
+      <span>Reconciliation</span>
+    </div>
+
+    <div class="flow" role="img" aria-label="Pipeline: source files, stage with stored procedure, SSIS data flow, warehouse table, then SSRS and Power BI.">
+      <span class="node" data-node="0"><span class="n">01</span>XLSX / TXT</span>
+      <span class="arrow" data-arrow="0"></span>
+      <span class="node" data-node="1"><span class="n">02</span>STAGE &middot; SP</span>
+      <span class="arrow" data-arrow="1"></span>
+      <span class="node" data-node="2"><span class="n">03</span>SSIS DATA FLOW</span>
+      <span class="arrow" data-arrow="2"></span>
+      <span class="node" data-node="3"><span class="n">04</span>WAREHOUSE</span>
+      <span class="arrow" data-arrow="3"></span>
+      <span class="node" data-node="4"><span class="n">05</span>SSRS / POWER BI</span>
+    </div>
+
+    <div class="ledger">
+      <div class="lrow head">
+        <span class="lbl">Check</span><span class="num src">Source</span><span class="num dst">Destination</span><span class="res">Result</span>
+      </div>
+      <div class="lrow" data-check data-value="142860" data-dec="0">
+        <span class="lbl">ROW_COUNT</span>
+        <span class="num src">0</span><span class="num dst">0</span>
+        <span class="res">&middot;&middot;&middot;</span>
+      </div>
+      <div class="lrow" data-check data-value="48213904.22" data-dec="2">
+        <span class="lbl">SUM(WRITTEN_PREM)</span>
+        <span class="num src">0</span><span class="num dst">0</span>
+        <span class="res">&middot;&middot;&middot;</span>
+      </div>
+      <div class="lrow" data-check data-value="11704556.08" data-dec="2">
+        <span class="lbl">SUM(PAID_LOSS)</span>
+        <span class="num src">0</span><span class="num dst">0</span>
+        <span class="res">&middot;&middot;&middot;</span>
+      </div>
+      <div class="lrow" data-check data-value="9431" data-dec="0">
+        <span class="lbl">DISTINCT(POLICY_NO)</span>
+        <span class="num src">0</span><span class="num dst">0</span>
+        <span class="res">&middot;&middot;&middot;</span>
+      </div>
+    </div>
+
+    <div class="panel-foot">
+      <span>Files processed <b id="fileCount">0</b> &middot; Foreach Loop container</span>
+      <span class="stamp" id="stamp">Running</span>
+    </div>
+  </div>
+  <p class="note">Illustrative figures — the shape of a real load, not client data.</p>
+</header>
+
+<!-- ===================== WORK ===================== -->
+<section id="work" class="wrap">
+  <div class="rule rv">
+    <span class="tag">Work</span>
+    <span class="spacer"></span>
+    <span class="meta">Insurance &middot; Data &amp; Reporting</span>
+  </div>
+  <h2 class="rv">Two years on a production BI stack.</h2>
+  <p class="sec-lede rv">Not coursework — packages that run on a schedule, reports people open on Monday morning, and figures that have to tie out to a workbook someone in finance already trusts.</p>
+
+  <article class="job rv">
+    <div class="job-when">Sep 2024 &mdash; <span class="now">Present</span><br>Stamford, CT &middot; Remote</div>
+    <div>
+      <h3>Business Intelligence Developer</h3>
+      <div class="co">W. R. Berkley Corporation &middot; Technical Operations Associate</div>
+      <ul>
+        <li>Build <b>SSIS</b> packages that load Excel and delimited text feeds into SQL Server — <b>Foreach Loop containers</b> to walk an entire directory in one package, and expression-driven variables that resolve file names from the reporting date the user picks.</li>
+        <li>Write <b>T-SQL stored procedures</b> that stage and pre-calculate source data before load, so premium, loss and reserve logic lives in version-controlled SQL instead of buried inside a data flow.</li>
+        <li>Put <b>row-count and column-sum reconciliation</b> on every load. A mismatch fails the package, which is how truncated and duplicated files get caught before anyone reports on them.</li>
+        <li>Delivered <b>8 production SSRS reports</b> that replaced hand-maintained Excel deliverables — date and division parameters, multi-level subreports, drill-through detail rows, year-to-date aggregation — deployed and secured on <b>SharePoint</b>.</li>
+        <li>Translate insurance formulas out of business-owned workbooks into stored procedures and complex queries, so every reported figure traces back to source.</li>
+        <li>Model data in <b>Power BI</b> and write <b>DAX</b> measures — time intelligence, ratios, YTD — over the same governed datasets.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="job rv">
+    <div class="job-when">May 2024 &mdash; Sep 2024<br>Stamford, CT &middot; Remote</div>
+    <div>
+      <h3>Technical Operations Intern</h3>
+      <div class="co">Berkley Custom Insurance Managers</div>
+      <ul>
+        <li>Built a <b>Power Apps + Power Automate</b> application that takes user input, pulls the matching records, writes them to Excel, files it in SharePoint and emails it — replacing a recurring manual pull.</li>
+        <li>Developed <b>C# / ASP.NET MVC</b> portals moving data between internal systems and the warehouse, including an accounting portal for on-demand retrieval of automated journal entries.</li>
+        <li>Improved the SQL and SSIS loading behind corporate dashboard compilation and <b>IBNR</b> calculations.</li>
+        <li>Produced Power BI reports with measures, slicers and parameters; automated recurring Excel work with VBA.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="job rv">
+    <div class="job-when">Apr 2024 &mdash; Jun 2024<br>Remote</div>
+    <div>
+      <h3>Frontend Developer Intern</h3>
+      <div class="co">MindStaq</div>
+      <ul>
+        <li>Built Angular and TypeScript interface features in an Agile team under senior developer review, contributing to code reviews and QA.</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== STACK ===================== -->
+<section id="stack" class="wrap">
+  <div class="rule rv">
+    <span class="tag">Stack</span>
+    <span class="spacer"></span>
+    <span class="meta">Daily use in bold</span>
+  </div>
+  <h2 class="rv">What I reach for.</h2>
+  <p class="sec-lede rv">The Microsoft BI stack is the day job. Everything else is what I've built with on my own time, and a fair amount of it has come back useful at work.</p>
+
+  <div class="stack rv">
+    <div class="sgroup">
+      <h4>Data &amp; ETL</h4>
+      <div class="chips">
+        <span class="chip key">SQL Server</span><span class="chip key">T-SQL</span>
+        <span class="chip key">Stored Procedures</span><span class="chip key">SSIS</span>
+        <span class="chip key">SSMS</span><span class="chip">Data Warehousing</span>
+        <span class="chip">Query Tuning</span><span class="chip">SQL Agent</span>
+        <span class="chip">MongoDB</span><span class="chip">SQLite</span>
+      </div>
+    </div>
+    <div class="sgroup">
+      <h4>Reporting &amp; BI</h4>
+      <div class="chips">
+        <span class="chip key">SSRS</span><span class="chip key">Power BI</span>
+        <span class="chip key">DAX</span><span class="chip">Power Query</span>
+        <span class="chip">Subreports</span><span class="chip">Drill-through</span>
+        <span class="chip">SharePoint</span><span class="chip">Excel / VBA</span>
+      </div>
+    </div>
+    <div class="sgroup">
+      <h4>Cloud &amp; Automation</h4>
+      <div class="chips">
+        <span class="chip key">Azure Data Fundamentals</span>
+        <span class="chip">Power Automate</span><span class="chip">Power Apps</span>
+        <span class="chip">Vercel</span><span class="chip">DigitalOcean</span>
+        <span class="chip">GitHub Actions</span>
+      </div>
+    </div>
+    <div class="sgroup">
+      <h4>Programming</h4>
+      <div class="chips">
+        <span class="chip key">SQL</span><span class="chip key">Python</span>
+        <span class="chip">C#</span><span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">R</span>
+      </div>
+    </div>
+    <div class="sgroup">
+      <h4>Applications</h4>
+      <div class="chips">
+        <span class="chip">ASP.NET MVC</span><span class="chip">Angular</span>
+        <span class="chip">React</span><span class="chip">Node / Express</span>
+        <span class="chip">FastAPI</span><span class="chip">Flask</span>
+        <span class="chip">REST APIs</span>
+      </div>
+    </div>
+    <div class="sgroup">
+      <h4>AI in the loop</h4>
+      <div class="chips">
+        <span class="chip key">Claude / LLM APIs</span>
+        <span class="chip">Structured output</span><span class="chip">Vision models</span>
+        <span class="chip">Prompt engineering</span><span class="chip">Agent orchestration</span>
+        <span class="chip">Cost guardrails</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUILDS ===================== -->
+<section id="builds" class="wrap">
+  <div class="rule rv">
+    <span class="tag">Builds</span>
+    <span class="spacer"></span>
+    <span class="meta">Self-directed &middot; Nights and weekends</span>
+  </div>
+  <h2 class="rv">Systems I built end to end.</h2>
+  <p class="sec-lede rv">All of these are mine from scratch: the data source, the pipeline, the storage, the scoring, the interface. I build them with AI as the pair — and in most of them an LLM is also a component inside the system, doing classification, extraction or vision work that regex can't. Directing that well is its own skill, and it's the reason one person can ship this much.</p>
+
+  <div class="builds rv">
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Market Catalyst Detector</h3>
+        <span class="status live">Running</span>
+      </div>
+      <p>A service that reads financial news the second it publishes, scores each headline through 400+ regex rules plus an LLM classifier, and pushes ranked alerts to Discord and an Interactive Brokers paper-trading bot. The exit strategy wasn't a guess — it came out of backtesting 50,000+ historical trades against second-level price bars.</p>
+      <div class="tech">Python &middot; SQLite &middot; Claude API &middot; Polygon &middot; IBKR &middot; DigitalOcean</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Facade Recon</h3>
+        <span class="status">Built</span>
+      </div>
+      <p>Finds commercial buildings that need facade cleaning so nobody has to drive around looking for them. Discovers candidates, pulls Street View from a calculated camera bearing, gates them by height with a cheap first pass, then scores condition and job suitability with a vision model — every lead arrives with an outreach line written about that specific building.</p>
+      <div class="tech">FastAPI &middot; SQLite &middot; React &middot; Leaflet &middot; Claude Vision &middot; Google Places</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Business Knowledge Base</h3>
+        <span class="status">Complete</span>
+      </div>
+      <p>1,100 transcripts in, 660 structured business teardowns out. Parallel schema-validated agents did the extraction, and every case got graded on evidence quality so speculation never reached the summaries. Built batched and resumable, because a multi-million-token job will get interrupted.</p>
+      <div class="tech">Python &middot; Agent orchestration &middot; Structured output &middot; Static site generation</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>No-Website Finder</h3>
+        <span class="status live">Live</span>
+      </div>
+      <p>Sweeps Google Places for local businesses that have a profile but no website, then drops them into a shared lead tracker — 1,700 Central New Jersey records with a multi-user status pipeline, filtering, tap-to-call and CSV export.</p>
+      <div class="tech">Node &middot; Express &middot; MongoDB Atlas &middot; Vercel &middot; Google Places API</div>
+      <a class="card-link" href="https://no-website-finder.vercel.app" target="_blank" rel="noopener">Open the app &rarr;</a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>NJ → NYC Apartment Hunter</h3>
+        <span class="status">Built</span>
+      </div>
+      <p>Scrapes four listing sites that actively don't want to be scraped, geocodes every result, and ranks them by real door-to-door commute time to three Manhattan destinations instead of by map distance. Getting past Cloudflare and PerimeterX was most of the work.</p>
+      <div class="tech">Python &middot; Playwright &middot; SQLite &middot; Flask &middot; OSRM &middot; Nominatim</div>
+      <a class="card-link" href="https://github.com/Ralphhf/nj-nyc-apartment-hunter" target="_blank" rel="noopener">Source &rarr;</a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>AI Website Generator</h3>
+        <span class="status">Built</span>
+      </div>
+      <p>Takes a business with a Google profile and no website and produces a finished one — copy, layout and imagery generated to brief, then committed to its own repository and deployed. Built as the delivery end of the lead pipeline above.</p>
+      <div class="tech">Next.js &middot; LLM generation &middot; GitHub API &middot; Vercel</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>NewJersey Residence</h3>
+        <span class="status live">Live</span>
+      </div>
+      <p>A pitch demo for a luxury real-estate brokerage: a 301-frame cinematic property tour scrubbed by scroll position on a canvas. The interesting part is the sliding-window frame loader — holding every decoded frame in memory crashed real phones, and that failure is invisible in headless testing.</p>
+      <div class="tech">Canvas &middot; WebP &middot; ffmpeg &middot; GitHub Pages</div>
+      <a class="card-link" href="https://ralphhf.github.io/newjerseyresidence-demo/" target="_blank" rel="noopener">View the tour &rarr;</a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Bagline</h3>
+        <span class="status">Prototype</span>
+      </div>
+      <p>A pure-skill cornhole game with no random number generator anywhere in it — every throw is decided by player input alone, and the physics are deterministic and test-covered. That constraint is the entire legal premise of the real-money product it prototypes.</p>
+      <div class="tech">PWA &middot; Vanilla JS &middot; Deterministic physics &middot; No build step</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>And the rest</h3>
+        <span class="status">Ongoing</span>
+      </div>
+      <p>A news-monitoring pipeline, a scraper that pulled and catalogued a few thousand exercise animations, a commute checker, a schedule app, and a handful of client sites. Some finished, some abandoned once they'd taught me the thing I started them for.</p>
+      <div class="tech">Repositories, notes and works in progress</div>
+      <a class="card-link" href="https://github.com/Ralphhf" target="_blank" rel="noopener">Browse GitHub &rarr;</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="wrap">
+  <div class="rule rv">
+    <span class="tag">About</span>
+    <span class="spacer"></span>
+    <span class="meta">New Brunswick, NJ</span>
+  </div>
+
+  <div class="about rv">
+    <img class="portrait" src="portrait.jpg" alt="Ralph Farah" width="500" height="500" loading="lazy">
+    <div>
+      <h2>Ralph Farah</h2>
+      <p>I'm a <strong>Business Intelligence Developer</strong> at W. R. Berkley, working on the reporting stack for a commercial insurance carrier. My day is SSIS packages, stored procedures, SSRS reports and Power BI models — and the reconciliation checks that sit between them.</p>
+      <p>I came in as an intern on the same team, building Power Apps and Power Automate tooling and C# / ASP.NET MVC portals to move data between internal systems and the warehouse, and moved into the BI work from there.</p>
+      <p>Outside of that I build complete systems on my own — scrapers, pipelines, scoring engines and the interfaces on top of them. I work with AI heavily and deliberately: as the tool I write with, and as a component inside what I ship when the problem needs judgment rather than rules. <strong>Knowing where a model belongs in a system, and where it doesn't, is most of the value.</strong></p>
+
+      <div class="facts">
+        <div class="fact"><span class="k">Education</span><span class="v">Rutgers University — B.A. Computer Science, 2024</span></div>
+        <div class="fact"><span class="k">Certified</span><span class="v">Microsoft Azure Data Fundamentals (DP-900)</span></div>
+        <div class="fact"><span class="k">Also</span><span class="v">Prompt Engineering &amp; Custom GPTs — Vanderbilt University</span></div>
+        <div class="fact"><span class="k">Languages</span><span class="v">English &amp; Arabic fluent · French proficient · Spanish basic</span></div>
+        <div class="fact"><span class="k">Open to</span><span class="v">BI Developer · Data Engineer · Analytics Engineer roles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="wrap">
+  <div class="rule rv">
+    <span class="tag">Contact</span>
+    <span class="spacer"></span>
+    <span class="meta">Open to conversations</span>
+  </div>
+  <h2 class="rv">Let's talk.</h2>
+  <p class="sec-lede rv">If you're hiring for BI, data engineering or analytics work — or you just want to know how one of these was built — email is fastest.</p>
+
+  <div class="contact-grid rv">
+    <a class="cbox" href="mailto:ralph.farah.career@gmail.com">
+      <span class="k">Email</span>
+      <span class="v">ralph.farah.career@gmail.com</span>
+    </a>
+    <a class="cbox" href="https://www.linkedin.com/in/ralph-farah-05a60320b/" target="_blank" rel="noopener">
+      <span class="k">LinkedIn</span>
+      <span class="v">/in/ralph-farah</span>
+    </a>
+    <a class="cbox" href="https://github.com/Ralphhf" target="_blank" rel="noopener">
+      <span class="k">GitHub</span>
+      <span class="v">github.com/Ralphhf</span>
+    </a>
+    <a class="cbox" href="RalphFarah-Resume.pdf" download>
+      <span class="k">Résumé</span>
+      <span class="v">Download PDF</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>Ralph Farah &middot; Business Intelligence Developer</span>
+    <span>Built from scratch &middot; No template</span>
+  </div>
+</footer>
 
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CXSJ9JREJ5');
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll reveal ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealables.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- the tie-out ---------- */
+  var rows   = Array.prototype.slice.call(document.querySelectorAll('[data-check]'));
+  var nodes  = Array.prototype.slice.call(document.querySelectorAll('[data-node]'));
+  var arrows = Array.prototype.slice.call(document.querySelectorAll('[data-arrow]'));
+  var stamp  = document.getElementById('stamp');
+  var fileEl = document.getElementById('fileCount');
+
+  function fmt(v, dec){
+    return v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+
+  function settle(){
+    nodes.forEach(function(n){ n.classList.add('on'); });
+    arrows.forEach(function(a){ a.classList.add('on'); });
+    rows.forEach(function(r){
+      var v = parseFloat(r.dataset.value), d = parseInt(r.dataset.dec, 10);
+      r.querySelector('.src').textContent = fmt(v, d);
+      r.querySelector('.dst').textContent = fmt(v, d);
+      var res = r.querySelector('.res');
+      res.textContent = '✓ MATCH';
+      res.classList.add('ok');
+    });
+    fileEl.textContent = '12';
+    stamp.textContent = '✓ Succeeded';
+    stamp.classList.add('ok');
+  }
+
+  function countUp(row, delay){
+    var target = parseFloat(row.dataset.value);
+    var dec    = parseInt(row.dataset.dec, 10);
+    var src    = row.querySelector('.src');
+    var dst    = row.querySelector('.dst');
+    var res    = row.querySelector('.res');
+    var DUR    = 900;
+
+    setTimeout(function(){
+      res.textContent = 'CHECKING';
+      var t0 = null;
+      function step(ts){
+        if (t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / DUR, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = target * eased;
+        src.textContent = fmt(val, dec);
+        dst.textContent = fmt(val, dec);
+        if (p < 1) {
+          requestAnimationFrame(step);
+        } else {
+          src.textContent = fmt(target, dec);
+          dst.textContent = fmt(target, dec);
+          res.textContent = '✓ MATCH';
+          res.classList.add('ok');
+        }
+      }
+      requestAnimationFrame(step);
+    }, delay);
+  }
+
+  function run(){
+    nodes.forEach(function(n, i){
+      setTimeout(function(){
+        n.classList.add('on');
+        if (arrows[i - 1]) arrows[i - 1].classList.add('on');
+      }, 160 + i * 190);
+    });
+
+    rows.forEach(function(r, i){ countUp(r, 1150 + i * 210); });
+
+    // file counter ticks alongside the loop container label
+    var files = 0;
+    var tick = setInterval(function(){
+      files++;
+      fileEl.textContent = files;
+      if (files >= 12) clearInterval(tick);
+    }, 95);
+
+    setTimeout(function(){
+      stamp.textContent = '✓ Succeeded';
+      stamp.classList.add('ok');
+    }, 2500);
+  }
+
+  if (reduce) {
+    settle();
+  } else {
+    var panel = document.getElementById('tieout');
+    if ('IntersectionObserver' in window) {
+      var pio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { run(); pio.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      pio.observe(panel);
+    } else {
+      run();
+    }
+  }
+})();
 </script>
-  <style>
-    ul.leading-relaxed {
-        list-style-type: disc; /* To show bullets for the main list */
-    }
 
-    ul.leading-relaxed ul {
-        list-style-type: circle; /* To show bullets for the nested list */
-        margin-left: 20px; /* To add indentation before each course */
-    }
-</style>
-  </head>
-  <body>
-    <div class="navbar" id = "home">
-    <a href="#home">Home</a>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact" id="contact-link">Contact Me</a>
-
-    <a href="MyResume.FarahRalph (3).pdf" download="Ralph_Farah_resume(new)">Resume</a>
-
-</div>
-     
-  <section class="banner-section text-pink-200 body-font" style="background: url('Backgroundimage.jpg') no-repeat center center; background-size: cover; height: 100vh;">
-    <link href = "styleJS.css" rel = "stylesheet" type = "text/css">
-    <div id = "particles-js"</div>
-      <script src = "particles.js"></script>
-      <script src = "app.js"></script>
-      
-  <div class="container mx-auto flex px-5 py-24 pt-64 md:flex-row flex-col items-center">
-
-  <div class="content">
-    <div class="profile-pic"></div>
-    <h1>Ralph Farah</h1>
-    <p>Web Development & Data Analysis & Cyber Security</p>
-</div>
-  </div>
-</section>
-
-
-
-
-<section class="text-pink-300 body-font bg-pink-200">
-<div class="container px-5 py-24 mx-auto">
-  <div class="flex flex-wrap w-full mb-20">
-    <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-pink-100" id="about">About Me</h1>
-
-      <div class="h-1 w-20 bg-pink-300 rounded"></div>
-    </div>
-    <p class="lg:w-1/2 w-full leading-relaxed text-pink-300">As a Senior majoring in Computer Science, I possess strong proficiency in programming languages like Python, R, SQL, Java, and C++. Seeking roles in cyber security, internet technology, data analysis, or web development, I bring a deep understanding of web security practices, including advanced techniques in HTTP attack mitigation, authentication security, and vulnerability assessment. I offer solid project management skills, leadership qualities, and a history of team collaboration. My expertise spans R and Python toolkits such as Pandas, Seaborn, Matplotlib, NumPy, scikit-learn, and Django, emphasizing my data analysis inclination. Currently working towards a Data Analysis certificate from Google. Additionally, I have practical knowledge in frontend development using HTML, CSS, and JavaScript. Besides technical skills, I am fluent in English, with a good grasp of French and basic Spanish.</p>
-  </div>
-  <div class="flex flex-wrap -m-4">
-    <div class="xl:w-1/4 md:w-1/2 p-4 w-full">
-      <div class="bg-pink-100 p-6 rounded-lg">
-        <img class="h-40 rounded w-full object-cover object-center mb-6" src="photo-1579389082978-de4aece6f446"> 
-        <h3 class="tracking-widest text-pink-200 text-xs font-medium title-font" >Experience</h3>
-        <h2 class="text-lg text-pink-300 font-medium title-font mb-4"></h2>
-<style>
-    .experience-list {
-        list-style-type: disc; /* Solid bullet points for main list */
-        margin-left: 20px;
-    }
-
-    .experience-list ul {
-        list-style-type: circle; /* Hollow bullet points for sub-lists */
-        margin-left: 20px;
-    }
-</style>
-
-<ul class="experience-list">
-    <li>Berkley Custom Insurance Managers, Stanford, CT
-        <ul>
-            <li>Technical Finance Intern, April 2024 - May 2024</li>
-            <li>Developed web portals and data interfaces using HTML, CSS, JavaScript, PHP, and Microsoft SQL Server.</li>
-            <li>Focused on integrating technology and automation in financial processes at Berkley Custom Insurance Managers.</li>
-            <li>Gained expertise in SQL and SSIS for data manipulation and efficient financial reporting.</li>
-            <li>Contributed to corporate dashboard compilations and automated accounting functions</li>
-          
-        </ul>
-    </li>
-    <!-- Include other experience items here -->
-</ul>      </div>
-    </div>
-    <div class="xl:w-1/4 md:w-1/2 p-4 w-full">
-      <div class="bg-pink-100 p-6 rounded-lg">
-        <img class="h-40 rounded w-full object-cover object-center mb-6" src="photo-1484807352052-23338990c6c6" alt="content">
-        <h3 class="tracking-widest text-pink-200 text-xs font-medium title-font">Education</h3>
-        <h2 class="text-lg text-pink-300 font-medium title-font mb-4"></h2>
-
-        <style>
-    .leading-relaxed.text-base.text-pink-300 {
-        list-style-type: disc; /* Solid bullet points for main list */
-        margin-left: 20px;
-    }
-
-    .leading-relaxed.text-base.text-pink-300 ul {
-        list-style-type: circle; /* Hollow bullet points for sub-lists */
-        margin-left: 20px;
-    }
-</style>
-
-<ul class="leading-relaxed text-base text-pink-300">
-    <li>Rutgers, The State University of New Jersey - School Of Arts & Sciences</li>
-    <li>Major: Computer Science Bachelor Of Arts</li>
-    <li>Cumulative GPA: 3.3</li>
-    <li>Relevant Coursework:
-        <ul>
-            <li>Introduction to Data Science</li>
-            <li>Computer Architecture</li>
-            <li>Database and Information Management</li>
-            <li>Design and Algorithm</li>
-            <li>Data Structures</li>
-            <li>Programming Concepts</li>
-            <li>Internet Technology</li>
-            <li>Computer Programming II</li>
-            <li>Intro. to Mobile Application Development</li>
-          
-          
-          
-        </ul>
-    </li>
-</ul>      </div>
-    </div>
-    <div class="xl:w-1/4 md:w-1/2 p-4 w-full">
-      <div class="bg-pink-100 p-6 rounded-lg">
-        <img class="h-40 rounded w-full object-cover object-center mb-6" src="photo-1499951360447-b19be8fe80f5" alt="content">
-        <h3 class="tracking-widest text-pink-200 text-xs font-medium title-font">Skills & Interests</h3>
-        <h2 class="text-lg text-pink-300 font-medium title-font mb-4"></h2>
-<style>
-    .horizontal-list {
-        list-style-type: disc; /* Adjust as needed */
-        padding: 0;
-    }
-
-    .horizontal-list li {
-        display: inline-block; /* Place items in a line */
-        margin-right: 15px; /* Spacing between items */
-    }
-</style>
-
-<ul class="leading-relaxed text-base text-pink-300">
-    <li>Professional Skills:
-        <ul class="horizontal-list">
-           <li>Kali linux</li>
-           <li>Burp Suite</li>
-           <li>R</li>
-            <li>Python ( Pandas, Numpy, Seaborn, Matplotlib, Scikit-learn, Django)</li>
-            <li>SQL</li>
-            <li>Java</li>
-            <li>Jupyter Notebook</li>
-            <li>C++</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Javascript</li>
-            <li>Excel</li>
-           
-            <br>
-             
-        </ul>
-    </li>
-    <li>Languages:
-        <ul>
-            <li>English</li>
-            <li>French</li>
-            <li>Spanish</li>
-        </ul>
-    </li>
-    <li>Interests:
-        <ul class="horizontal-list">
-           <li>Hacking</li>
-            <li>Soccer</li>
-            <li>Weight Lifting</li>
-            <li>Boxing</li>
-            <li>Photography</li>
-            <li>Hiking</li>
-            <li>Guitar</li>
-            <li>Football</li>
-            <li>Stock Trading</li>
-            <li>Chess</li>
-            <li>Technology</li>
-          <br>
-          <br>
-          
-        </ul>
-    </li>
-</ul>
-
-      </div>
-    </div>
-    <div class="xl:w-1/4 md:w-1/2 p-4 w-full">
-      <div class="bg-pink-100 p-6 rounded-lg">
-        <img class="h-40 rounded w-full object-cover object-center mb-6" src="photo-1624378515195-6bbdb73dff1a" alt="content">
-        <h3 class="tracking-widest text-pink-200 text-xs font-medium title-font">Leadership</h3>
-        <h2 class="text-lg text-pink-300 font-medium title-font mb-4"></h2>
-<style>
-    .experience-list {
-        list-style-type: disc; /* Solid bullet points for main list */
-        margin-left: 20px;
-    }
-
-    .experience-list ul {
-        list-style-type: circle; /* Hollow bullet points for sub-lists */
-        margin-left: 20px;
-    }
-</style>
-
-<ul class="experience-list">
-    <li>Phi Kappa Tau, Rutgers University
-        <ul>
-            <li>Treasurer, Sep 2022 - Sep 2023</li>
-            <li>Managed a $40,000 budget.</li>
-            <li>Organized fraternity events.</li>
-        </ul>
-    </li>
-    <li>Rutgers University Programming Association
-        <ul>
-            <li>Event Coordinator, Sep 2022 - Sep 2023</li>
-            <li>Led programming initiatives.</li>
-            <li>Applied advanced programming skills.</li>
-        </ul>
-    </li>
-    <li>Data Science Club, Rutgers University
-        <ul>
-            <li>Member, Jan 2021 - Present</li>
-            <li>Enhanced projects using R.</li>
-            <li>Participated in meetings to further develop my skills in Python and R</li>
-          <br>
-          <br>
-         
-        </ul>
-    </li>
-</ul>
-
-
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section class="text-pink-100 -font bg-pink-100 section-bg">
-    <div class="container px-5 py-24 mx-auto">
-  <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-pink-200 mb-20" id = "projects">Data Analytics Projects
-    <br class="hidden sm:block">
-  </h1>
-  <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-    <!-- Python Section -->
-<style>
-    #python-more ul {
-        list-style-type: disc; /* Standard bullet points */
-        margin-left: 20px; /* Indentation for the list */
-    }
-
-    #python-more li {
-        margin-bottom: 5px; /* Spacing between list items */
-    }
-</style>
-
-<div class="p-4 md:w-1/3 w-full">
-    <div class="p-4 bg-pink-200 rounded">
-        <div class="flex-grow pl-6">
-            <h2 class="text-pink-100 text-lg title-font font-medium mb-2">Python</h2>
-            <p class="leading-relaxed text-base">Expertise in Python for data analysis.</p>
-            <a class="mt-3 text-pink-400 inline-flex items-center cursor-pointer" onclick="toggleReadMore('python-more')">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </div>
-        <div id="python-more" style="display: none;">
-            <ul>
-                <li>Executed exploratory data analysis on large NYPD complaint dataset and Twitter social media data via API.</li>
-                <li>Performed thorough data preprocessing and cleaning.</li>
-                <li>Conducted detailed pattern analysis.</li>
-                <li>Developed comprehensive data visualizations using Pandas, NumPy, Seaborn, scikit-learn, and Matplotlib.</li>
-                <li>Gained expertise in data-driven decision-making and insights extraction.</li>
-                <li>Enhanced skills in API interaction and handling complex data structures.</li>
-                <li>Practiced advanced statistical analysis techniques.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-   <!-- R Section -->
-    <style>
-    #r-more ul {
-        list-style-type: disc; /* Standard bullet points */
-        margin-left: 20px; /* Indentation for the list */
-    }
-
-    #r-more li {
-        margin-bottom: 5px; /* Spacing between list items */
-    }
-</style>
-
-<div class="p-4 md:w-1/3 w-full">
-    <div class="p-4 bg-pink-200 rounded">
-        <div class="flex-grow pl-6">
-            <h2 class="text-pink-100 text-lg title-font font-medium mb-2">R</h2>
-            <p class="leading-relaxed text-base">Proficient in R for statistical analysis and data visualization.</p>
-            <a class="mt-3 text-pink-400 inline-flex items-center cursor-pointer" onclick="toggleReadMore('r-more')">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </div>
-        <div id="r-more" style="display: none;">
-            <ul>
-                <li>Conducted advanced statistical analyses using R.</li>
-                <li>Specialized in data visualization techniques, creating insightful graphs and charts.</li>
-                <li>Employed R for data manipulation and analysis in various projects.</li>
-                <li>Handled large datasets efficiently, applying data cleaning and transformation processes.</li>
-              <li>Practicing data manipulation and cleaning using dplyr and tidyr packages.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    
-    <!-- SQL Section -->
-    <style>
-    #sql-more ul {
-        list-style-type: disc; /* Standard bullet points */
-        margin-left: 20px; /* Indentation for the list */
-    }
-
-    #sql-more li {
-        margin-bottom: 5px; /* Spacing between list items */
-    }
-</style>
-
-<div class="p-4 md:w-1/3 w-full">
-    <div class="p-4 bg-pink-200 rounded">
-        <div class="flex-grow pl-6">
-            <h2 class="text-pink-100 text-lg title-font font-medium mb-2">SQL</h2>
-            <p class="leading-relaxed text-base">Developing skills in SQL for data management&analysis.</p>
-            <a class="mt-3 text-pink-400 inline-flex items-center cursor-pointer" onclick="toggleReadMore('sql-more')">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </div>
-        <div id="sql-more" style="display: none;">
-            <ul>
-                <li>Gaining foundational knowledge in SQL for database querying and manipulation.</li>
-                <li>Learning to create and use basic SQL queries for data retrieval.</li>
-                <li>Understanding table creation, data insertion, and database schema design.</li>
-                <li>Practicing data filtering, sorting, and aggregation operations in SQL.</li>
-                <li>Exploring JOIN operations to combine data from multiple tables.</li>
-                <li>Studying the use of subqueries and complex conditions in SQL statements.</li>
-                <li>Building skills in data import/export and basic database administration tasks.</li>
-                <li>Engaging in small-scale projects to apply and reinforce SQL concepts.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-</div>
-</section>
-
-       <section class="text-pink-300 -font bg-pink-200">
-    <div class="container px-5 py-24 mx-auto flex flex-wrap">
-        <div class="w-full mb-20">
-<h1 class="sm:text-3xl text-2xl font-medium title-font text-center" style="color: red;">Cyber Security</h1>
-          <p class="sm:text-3xl text-2xl font-medium title-font text-center" style="color: red;">Semicolon Academy</p>
-
-
-        </div>
-
-            
-            <div class="p-4 md:w-1/3 w-full">
-                <div class="p-4 bg-pink-200 rounded">
-                    <div class="flex-grow pl-6">
-<h1 class="text-lg title-font font-medium mb-2" style="color: red;">ETH-101 Ethical Hacking Foundation</h1>
-                        
-                    </div>
-                    <div id="python-more">
-                        <ul>
-                            <li><span style="color: red;">Penetration Testing:</span> Expertise in conducting comprehensive penetration tests to identify and exploit system vulnerabilities.</li>
-<li><span style="color: red;">Kali Linux Proficiency:</span> Advanced skills in using Kali Linux, a key operating system for cybersecurity professionals, including mastery of Linux commands.</li>
-<li><span style="color: red;">Network Security Techniques:</span> In-depth knowledge of configuring and securing network adapters, and practical experience in network-based attacks including WEP, WPA/WPA2 hacking, and de-authentication attacks.</li>
-<li><span style="color: red;">Web Application Penetration Testing:</span> Skills in testing web applications for vulnerabilities such as Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), SQL Injection, and Insecure Direct Object References (IDOR).</li>
-<li><span style="color: red;">Cryptography and Encryption:</span> Understanding of encryption methods, hashing algorithms, and their application in securing data.</li>
-<li><span style="color: red;">Practical Exploitation Skills:</span> Proficiency in exploiting network protocols like ARP, conducting Man-In-The-Middle attacks, and utilizing tools like Nmap for network reconnaissance.</li>
-<li><span style="color: red;">Denial of Service (DoS) Understanding:</span> Knowledge of DoS and DDoS attacks and strategies to mitigate these threats.</li>
-<li><span style="color: red;">Vulnerability Mitigation Strategies:</span> Ability to implement security measures to protect against common vulnerabilities like XSS, CSRF, SQL Injection, and IDOR.</li>
-<li><span style="color: red;">Bug Bounty Hunting Skills:</span> Understanding of the bug bounty landscape, including strategies for finding, exploiting, and reporting vulnerabilities.</li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- R Section -->
-            <div class="p-4 md:w-1/3 w-full">
-                <div class="p-4 bg-pink-200 rounded">
-                    <div class="flex-grow pl-6">
-<h2 class="text-lg title-font font-medium mb-2" style="color: red;">WETH-201 Web Security Professional</h2>
-                  
-                        
-                    </div>
-                    <div id="r-more">
-                        <ul>
-                            <li><span style="color: red;">Advanced Web Architecture Understanding:</span> Proficient knowledge of frontend, backend systems, DNS, and server-client communication, essential for web security analysis.</li>
-<li><span style="color: red;">Burp Suite Mastery:</span> Expertise in using Burp Suite for web application security testing, including advanced interception, mapping, and extension techniques.</li>
-<li><span style="color: red;">Expertise in Authentication Security:</span> Skilled in securing and exploiting cookie-based and token-based authentication systems, including JWT and MFA/2FA vulnerabilities.</li>
-<li><span style="color: red;">Advanced XSS Attack Techniques:</span> Proficient in identifying, exploiting, and preventing various XSS vulnerabilities, with a focus on DOM-based XSS and CSP bypass methods.</li>
-<li><span style="color: red;">Path Traversal and File Inclusion Skills:</span> Ability to detect and exploit path traversal, LFI, and RFI vulnerabilities, crucial for web application security.</li>
-<li><span style="color: red;">Server-Side Request Forgery (SSRF) Expertise:</span> Specialized skills in executing and mitigating SSRF attacks, including advanced bypass techniques.</li>
-<li><span style="color: red;">XML External Entity (XXE) Injection Proficiency:</span> Competence in exploiting XXE vulnerabilities, a critical skill for securing web applications.</li>
-<li><span style="color: red;">Brute Force Attack Strategies:</span> Mastery of brute force techniques and countermeasures, including the use of CAPTCHA bypass and IP rotation.</li>
-<li><span style="color: red;">Vulnerability Assessment with CVE and Scanning Tools:</span> Familiarity with CVE databases and proficiency in using key scanning tools like Nuclei, Nessus, Nikto, and Wfuzz for comprehensive vulnerability assessments.</li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SQL Section -->
-            <div class="p-4 md:w-1/3 w-full">
-                <div class="p-4 bg-pink-200 rounded">
-                    <div class="flex-grow pl-6">
-                      
-<h2 class="text-lg title-font font-medium mb-2" style="color: red;">WETH-301 Web Security Practitioner</h2>
-                        
-                    </div>
-                    <div id="sql-more">
-                        <ul>
-                           <li><span style="color: red;">Advanced HTTP Attack Techniques:</span> Mastery in HTTP verb tampering, host header attacks, and mitigation strategies, crucial for web security.</li>
-<li><span style="color: red;">Expertise in CRLF Injection and HTTP Request Smuggling:</span> Proficient in conducting and mitigating CRLF injection and HTTP request smuggling attacks, critical for defending web applications.</li>
-<li><span style="color: red;">GraphQL API Vulnerability Assessment:</span> In-depth understanding of GraphQL and its vulnerabilities, including IDOR, information disclosure, and CSRF attacks, essential for API security.</li>
-<li><span style="color: red;">Web Cache Deception and Poisoning Skills:</span> Knowledge of web cache deception and poisoning techniques, vital for securing web content delivery networks.</li>
-<li><span style="color: red;">Command Injection and Remote Code Execution (RCE) Expertise:</span> Skilled in identifying and mitigating command injection and RCE vulnerabilities, key for server security.</li>
-<li><span style="color: red;">Server-Side Template Injection (SSTI) Proficiency:</span> Ability to exploit and defend against SSTI attacks, important for securing web template engines.</li>
-<li><span style="color: red;">PostMessage Vulnerability Exploration:</span> Expertise in exploiting and mitigating vulnerabilities related to JavaScript postMessage, crucial for modern web application security.</li>
-<li><span style="color: red;">Advanced Web Authentication and Authorization Attacks:</span> Deep knowledge of OAuth, OpenID Connect, and JWT vulnerabilities and mitigation techniques, essential for securing authentication mechanisms.</li>
-<li><span style="color: red;">Code Review and Mobile App API Security:</span> Proficiency in performing code reviews for vulnerability identification and understanding vulnerabilities in mobile app APIs, valuable for comprehensive security analysis.</li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
-
-
-
-      </>
-   <footer>
-    <section id="custom-background-section">
-
-      
-
-<section id="contactt">
-      <p class="section__text__p1">Get in Touch</p>
-      <p class = "contactme" id = "contact">Contact Me</p>
-     
-      <div class="contactt-info-upper-container">
-        <div class="contactt-info-container">
-          <img
-            src="email.png"
-            alt="Email icon"
-            class="icon contactt-icon email-icon"
-          />
-          <p><a href="ralph.farah.career@gmail.com">ralph.farah.career@gmail.com</a></p>
-        </div>
-        <div class="contactt-info-container">
-          <img
-            src="linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contactt-icon linkedin-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/ralph-farah-05a60320b/">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-   
-
-    
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <p>Copyright &#169; 2023 Ralph Farah. All Rights Reserved.</p>
-       </section>
-    </footer>
-
-
-  
-  
-</style><div><div class=""><div class="content-root-rb-FdpxmT"></div><div class="content-root-WCIiJJ"><div class="sidebar-entry-btn-hvXPZj sidebar-entry-btn-right-doBuCO" style="visibility: visible; bottom: 829px;"><div class="float-btn-box-yen8CN"><div class="float-btn-dmQyFz"><span class="shortcut--0OZjH" style="opacity: 1;"></span></div></div><div class="extra-tools-box-Q-raLQ toolbar-AlHpmQ" style="bottom: -12px;"><div class="top-t5av-O"></div><div class="bot-bqr602"></div></div></div><div class="dialog-root-xrz8Zp"></div><div class="reading-summary-status-bar-yFqhHz"></div></div></div></div></template></div>  <script src="script.js"></script><link rel="stylesheet" href="stylee.css"></html>
+</body>
+</html>

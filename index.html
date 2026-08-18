@@ -375,7 +375,19 @@ footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 30px;}
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
 </style>
-<noscript><style>.rv{opacity:1;transform:none;}</style></noscript>
+<noscript><style>
+  .rv{opacity:1;transform:none;}
+  .filterbar,.g-kpi,.g-charts,#timeline,#builds,#experience{display:none!important;}
+  .g-two{grid-template-columns:1fr;}
+  .ns{
+    border:1px solid var(--line);border-radius:var(--r);
+    background:var(--surface);padding:20px 22px;margin:22px 0 0;
+  }
+  .ns h2{margin:0 0 10px;font-size:16px;}
+  .ns p{margin:0 0 12px;color:var(--text-2);font-size:14px;max-width:70ch;}
+  .ns ul{margin:0 0 12px;padding-left:20px;color:var(--text-2);font-size:14px;}
+  .ns li{margin-bottom:6px;}
+</style></noscript>
 </head>
 <body>
 
@@ -424,6 +436,30 @@ footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 30px;}
 </div>
 
 <main class="wrap">
+
+  <noscript>
+    <section class="ns">
+      <h2>Ralph Farah — Business Intelligence Developer, W. R. Berkley</h2>
+      <p>The charts and filters on this page are drawn with JavaScript, which is turned
+         off in your browser. Rather than show you figures stuck at zero, here is the
+         same material in plain text — and the <a href="RalphFarah-Resume.pdf">résumé PDF</a>
+         carries all of it.</p>
+      <ul>
+        <li><b>Business Intelligence Developer</b>, W. R. Berkley Corporation — Sep 2024 to present.
+            SSIS packages loading Excel and flat-file feeds, T-SQL stored procedures that calculate
+            before load, row-count and column-sum reconciliation on every load, 8 production SSRS
+            reports on SharePoint, and Power BI models with DAX measures.</li>
+        <li><b>Technical Operations Intern</b>, Berkley Custom Insurance Managers — May to Sep 2024.
+            Power Apps and Power Automate tooling, C# / ASP.NET MVC portals, SSIS loading behind
+            dashboards and IBNR calculations.</li>
+        <li><b>Frontend Developer Intern</b>, MindStaq — Apr to Jun 2024. Angular and TypeScript.</li>
+        <li><b>Self-directed builds</b> include a market catalyst detector with an LLM classifier and
+            a 50,000-trade backtest, an AI vision lead engine, an LLM extraction pipeline over 1,100
+            transcripts, and a shared lead tracker on Vercel and MongoDB.</li>
+      </ul>
+      <p>Rutgers University, B.A. Computer Science, 2024 · ralph.farah.career@gmail.com</p>
+    </section>
+  </noscript>
 
   <!-- ================= KPI ================= -->
   <section class="grid g-kpi rv" aria-label="Summary figures">

@@ -676,7 +676,7 @@ footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 30px;}
         both as the tool I write with and as a working part of the system, doing the classification,
         extraction and vision jobs that rules cannot. Open a card to see exactly which steps run on
         their own and where the model sits. The Facade Recon demo replays a real captured scan, so
-        clicking through it costs nothing and calls no API.
+        clicking through it costs nothing and calls no API. The generator itself sits behind a login for the same reason.
       </div>
       <div class="builds" id="buildGrid"></div>
       <div class="empty" id="buildEmpty" hidden>No builds match these filters.</div>
@@ -742,18 +742,18 @@ var ROLES = [
   {
     id:'berkley-bi', title:'Business Intelligence Developer',
     company:'W. R. Berkley Corporation',
-    where:'Stamford, CT · Remote',
+    where:'Stamford, CT · Hybrid',
     start:m(2024,9), end:m(2026,9), current:true, cat:'data',
     when:'Sep 2024 — Present',
     bullets:[
-      'Build <b>SSIS</b> packages that load Excel and delimited text feeds into SQL Server — <b>Foreach Loop containers</b> to walk an entire directory in one package, and expression-driven variables that resolve file names from the reporting date the user picks.',
+      'Build <b>SSIS</b> packages in <b>SSMS</b> and Visual Studio that load Excel and delimited text feeds into SQL Server. Moving to a <b>Foreach Loop container</b> collapsed what had been a separate package per file into <b>one package that walks the whole directory</b>, and expression-driven variables resolve file names from the reporting date the user picks, so a new month needs no code change.',
       'Write <b>T-SQL stored procedures</b> that stage and pre-calculate source data before load, so premium, loss and reserve logic lives in version-controlled SQL rather than buried in a data flow.',
-      'Put <b>row-count and column-sum reconciliation</b> on every load. A mismatch fails the package, which is how truncated and duplicated files get caught before anyone reports on them.',
-      'Delivered <b>8 production SSRS reports</b> replacing hand-maintained Excel deliverables — date and division parameters, multi-level subreports, drill-through detail rows, year-to-date aggregation — deployed and secured on <b>SharePoint</b>.',
+      'Put <b>row-count and column-sum reconciliation</b> on every load. A mismatch fails the package, so truncated and duplicated files are caught automatically instead of being tied out by hand after the fact.',
+      'Delivered <b>8 production SSRS reports</b> that retired hand-maintained Excel deliverables. Date and division parameters, multi-level subreports, drill-through detail rows and year-to-date aggregation mean the business self-serves every cut of the data instead of requesting a rebuild — deployed and secured on <b>SharePoint</b>.',
       'Translate insurance formulas out of business-owned workbooks into stored procedures and complex queries, so every reported figure traces back to source.',
       'Model data in <b>Power BI</b> and write <b>DAX</b> measures — time intelligence, ratios, YTD — over the same governed datasets.'
     ],
-    tags:['SSIS','T-SQL','SSRS','Power BI','DAX','SharePoint','SQL Server']
+    tags:['SSIS','T-SQL','SSMS','SSRS','Power BI','DAX','SharePoint','SQL Server']
   },
   {
     id:'berkley-intern', title:'Technical Operations Intern',
@@ -806,22 +806,26 @@ var BUILDS = [
   {
     name:'AI Website Generator', cat:'ai', status:'Built',
     start:m(2025,12), end:m(2026,3),
-    why:'Building a small business site by hand took me a couple of days, and that made the work barely worth quoting. If the process is the same every time, it should not need me sitting in the chair &mdash; so I automated the entire thing, right down to opening the editor.',
-    stats:[['~2 days','&rarr; one command'],['10+','sites generated']],
-    tech:'Next.js · TypeScript · Tailwind · Claude Code · GitHub API · Vercel',
-    ai:'Claude Code is the builder, not an assistant. The script hands it a pre-written prompt carrying the business brief and it writes the pages, the copy and the components itself &mdash; then the script takes over again to build and deploy.',
+    why:'Building a small business site by hand took me a couple of days, which made the work barely worth quoting. The steps were the same every time, so none of it needed me sitting in the chair. I automated the entire run &mdash; and then kept going past the website, because the site is not what the business actually needs. It needs to be found, booked and advertised.',
+    stats:[['~2 days','&rarr; one command'],['20+','guided steps'],['10+','sites generated']],
+    tech:'Next.js · TypeScript · Tailwind · Claude Code · Claude API · Google Places · Unsplash · GitHub API · Vercel',
+    ai:'Claude runs most of it. It writes the taglines, descriptions, service lists and testimonials; generates the logo brief and the hero-image search terms; writes the social bios and the Google Business Profile guide; and then <b>Claude Code writes the actual website</b> from a templated prompt. On the advertising side it writes the ad copy, the visual prompts behind the ad images, the video script and the voiceover line.',
     pipeline:[
-      ['Pick the business','Pulls the Google Places profile &mdash; name, trade, address, hours, reviews, photos.','auto'],
-      ['Write the brief','Turns that profile into a design brief and picks a visual direction suited to the trade.','auto'],
-      ['Scaffold','Copies the Next.js starter and zips it out into a fresh project folder.','auto'],
+      ['Find the business','Searches Google Places for local businesses with no website &mdash; or skip the search and enter one directly.','auto'],
+      ['Pull the profile','Name, trade, address, hours, reviews and photos come back pre-filled from the Google profile.','auto'],
+      ['Walk the brief','A 20-step wizard that changes shape by trade: services and pricing, products, a menu for restaurants, medical details for clinics, FAQs, portfolio, testimonials.','auto'],
+      ['Write the content','Claude drafts the tagline, description, service list and sample testimonials.','claude'],
+      ['Brand it','Generates the logo brief, then pulls hero imagery from Unsplash using search terms Claude wrote for that business.','claude'],
+      ['Package','Zips the whole data set together with a ready-made Claude prompt into a fresh project folder.','auto'],
       ['Open the tools','Launches VS Code on the folder and opens a terminal inside it.','auto'],
-      ['Call Claude','Fires Claude Code with the default prompt plus the brief. It writes the whole site.','claude'],
-      ['Build','Installs, type-checks and builds; failures get fed back for a fix.','auto'],
-      ['Ship','Creates the GitHub repository, pushes, and deploys to Vercel.','auto'],
-      ['Hand back','Returns the live URL, ready to attach to the lead record.','auto']
+      ['Call Claude Code','Hands over the default prompt carrying the brief. It writes the pages, the copy and the components.','claude'],
+      ['Build and ship','Builds, creates the GitHub repository, pushes and deploys to Vercel.','auto'],
+      ['Set up the presence','Google Business Profile setup guide, social bios written per platform, and online booking wired to Calendly or Acuity with deposit and walk-in policy.','claude'],
+      ['Run the ads','From the saved profile: ad copy written to an objective &mdash; awareness, consideration or conversion &mdash; with location, demographic and keyword targeting; ad images from a generated visual prompt; and video ads with a script, generated scenes and a voiceover in a chosen voice.','claude'],
+      ['Keep the profile','Every business is stored, so the site, the ads and the booking setup can all be revisited and regenerated later.','auto']
     ],
     links:[['https://github.com/Ralphhf/website-generator','Source',''],
-           ['https://github.com/Ralphhf?tab=repositories','Generated sites on GitHub','']]
+           ['','App is password-gated &mdash; my API keys stay mine','off']]
   },
   {
     name:'No-Website Finder', cat:'data', status:'Live', live:true,
@@ -941,6 +945,7 @@ var TECH = [
   { name:'JavaScript / TypeScript', months:40, cat:'web' },
   { name:'Python',                  months:36, cat:'data' },
   { name:'SQL Server / T-SQL',      months:27, cat:'data' },
+  { name:'SSMS',                    months:27, cat:'data' },
   { name:'SSIS',                    months:27, cat:'data' },
   { name:'Power BI',                months:27, cat:'data' },
   { name:'SSRS',                    months:23, cat:'data' },
@@ -1382,7 +1387,7 @@ function renderExperience(){
     head.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
     head.innerHTML =
       '<span class="exp" aria-hidden="true">&#9656;</span>' +
-      '<span><span class="ttl">'+x.title+'</span><br><span class="co">'+x.company+'</span></span>' +
+      '<span><span class="ttl">'+x.title+'</span><br><span class="co">'+x.company+' &middot; '+x.where+'</span></span>' +
       '<span class="when">'+x.when+'</span>';
 
     var body = document.createElement('div');

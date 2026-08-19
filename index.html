@@ -746,10 +746,10 @@ var ROLES = [
     start:m(2024,9), end:m(2026,9), current:true, cat:'data',
     when:'Sep 2024 — Present',
     bullets:[
+      'Replaced a reporting process that had been done in hand-built Excel workbooks for years with <b>8 parameterised SSRS reports published to SharePoint</b> — the business got online, self-service access for the first time. Date and division parameters, multi-level subreports, drill-through detail rows and year-to-date aggregation mean any cut of the data is now a filter rather than a rebuild request.',
       'Build <b>SSIS</b> packages in <b>SSMS</b> and Visual Studio that load Excel and delimited text feeds into SQL Server. Moving to a <b>Foreach Loop container</b> collapsed what had been a separate package per file into <b>one package that walks the whole directory</b>, and expression-driven variables resolve file names from the reporting date the user picks, so a new month needs no code change.',
       'Write <b>T-SQL stored procedures</b> that stage and pre-calculate source data before load, so premium, loss and reserve logic lives in version-controlled SQL rather than buried in a data flow.',
       'Put <b>row-count and column-sum reconciliation</b> on every load. A mismatch fails the package, so truncated and duplicated files are caught automatically instead of being tied out by hand after the fact.',
-      'Delivered <b>8 production SSRS reports</b> that retired hand-maintained Excel deliverables. Date and division parameters, multi-level subreports, drill-through detail rows and year-to-date aggregation mean the business self-serves every cut of the data instead of requesting a rebuild — deployed and secured on <b>SharePoint</b>.',
       'Translate insurance formulas out of business-owned workbooks into stored procedures and complex queries, so every reported figure traces back to source.',
       'Model data in <b>Power BI</b> and write <b>DAX</b> measures — time intelligence, ratios, YTD — over the same governed datasets.'
     ],

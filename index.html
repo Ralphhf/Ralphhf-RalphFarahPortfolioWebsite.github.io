@@ -305,7 +305,7 @@ table.dv th{color:var(--text-3);font-weight:500;letter-spacing:.08em;text-transf
 }
 
 /* ---- builds ---- */
-.builds{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+.builds{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;align-items:start;}
 .build{
   border:1px solid var(--line);border-radius:9px;
   background:rgba(255,255,255,.022);
@@ -314,7 +314,8 @@ table.dv th{color:var(--text-3);font-weight:500;letter-spacing:.08em;text-transf
   transition:transform .2s,border-color .2s,background .2s;
   animation:cardIn .38s ease both;
 }
-.build:hover{transform:translateY(-2px);border-color:var(--line-2);background:rgba(255,255,255,.045);}
+.build:hover{border-color:var(--line-2);background:rgba(255,255,255,.038);}
+.build.open{grid-column:1/-1;border-color:var(--line-2);background:rgba(255,255,255,.045);}
 @keyframes cardIn{from{opacity:0;transform:translateY(9px);}to{opacity:1;transform:none;}}
 .build .bt{display:flex;align-items:flex-start;gap:9px;margin-bottom:8px;}
 .build .cat{width:8px;height:8px;border-radius:2px;flex:none;margin-top:6px;}
@@ -336,6 +337,108 @@ table.dv th{color:var(--text-3);font-weight:500;letter-spacing:.08em;text-transf
 }
 .build .go:hover{text-decoration:underline;text-underline-offset:4px;}
 .empty{padding:34px 4px;text-align:center;color:var(--text-3);font-family:var(--mono);font-size:12px;}
+
+/* ---- build detail ---- */
+.build .why{
+  font-size:12.5px;color:var(--text);
+  border-left:2px solid var(--s2);
+  padding:2px 0 2px 10px;margin:0 0 11px;
+}
+.build .why b{font-weight:600;}
+.morebtn{
+  display:flex;align-items:center;gap:7px;width:100%;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-2);border-top:1px solid var(--line);
+  padding:11px 0 0;margin-top:auto;text-align:left;
+}
+.morebtn:hover{color:var(--text);}
+.morebtn .chev{display:inline-block;transition:transform .24s;font-size:12px;color:var(--accent);}
+.build.open .morebtn .chev{transform:rotate(90deg);}
+.detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s ease;}
+.build.open .detail{grid-template-rows:1fr;}
+.detail-in{overflow:hidden;}
+.dsec{padding-top:14px;}
+.dsec h4{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-3);margin:0 0 9px;font-weight:500;
+}
+.pipe{list-style:none;margin:0;padding:0;counter-reset:step;}
+.pipe li{
+  display:grid;grid-template-columns:20px 1fr;gap:9px;
+  padding:0 0 11px;position:relative;counter-increment:step;
+}
+.pipe li::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--mono);font-size:9.5px;color:var(--text-3);
+  padding-top:2px;
+}
+.pipe li:not(:last-child)::after{
+  content:'';position:absolute;left:6px;top:16px;bottom:0;
+  width:1px;background:var(--line-2);
+}
+.pipe .pname{font-size:12.5px;color:var(--text);font-weight:600;}
+.pipe .sd{font-size:12.5px;color:var(--text-2);}
+.by{
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;
+  border:1px solid var(--line-2);border-radius:4px;padding:1px 5px;
+  margin-left:7px;color:var(--text-3);white-space:nowrap;vertical-align:2px;
+}
+.by.claude{color:var(--s2);border-color:rgba(217,89,38,.5);background:rgba(217,89,38,.09);}
+.by.me{color:var(--s3);border-color:rgba(25,158,112,.45);}
+.aibox{
+  border:1px solid rgba(217,89,38,.32);background:rgba(217,89,38,.07);
+  border-radius:8px;padding:11px 13px;font-size:12.5px;color:var(--text-2);
+}
+.aibox b{color:var(--text);font-weight:600;}
+.links{display:flex;gap:8px;flex-wrap:wrap;padding-top:14px;}
+.lnk{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text);text-decoration:none;
+  border:1px solid var(--line-2);border-radius:6px;padding:6px 11px;
+  transition:border-color .18s,background .18s;
+}
+.lnk:hover{border-color:var(--accent);background:rgba(57,135,229,.12);}
+.lnk.demo{border-color:rgba(217,89,38,.5);color:var(--s2);}
+.lnk.demo:hover{background:rgba(217,89,38,.13);border-color:var(--s2);}
+.lnk.off{color:var(--text-3);border-style:dashed;pointer-events:none;}
+
+/* ---- replay demo ---- */
+.demo{padding-top:14px;}
+.demo-thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.demo-thumbs button{
+  width:60px;height:60px;border-radius:7px;overflow:hidden;
+  border:1px solid var(--line-2);padding:0;opacity:.55;
+  transition:opacity .18s,border-color .18s,transform .18s;
+}
+.demo-thumbs button:hover{opacity:.85;transform:translateY(-1px);}
+.demo-thumbs button[aria-pressed="true"]{opacity:1;border-color:var(--s2);}
+.demo-thumbs img{width:100%;height:100%;object-fit:cover;}
+.demo-view{display:grid;grid-template-columns:230px 1fr;gap:14px;align-items:start;}
+.demo-view img.shot{border-radius:8px;border:1px solid var(--line-2);width:100%;}
+.demo-name{font-size:13.5px;font-weight:600;margin:0 0 2px;}
+.demo-addr{font-family:var(--mono);font-size:10.5px;color:var(--text-3);margin:0 0 11px;}
+.scores{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px;}
+.score{border:1px solid var(--line);border-radius:6px;padding:5px 9px;}
+.score .n{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);}
+.score .l{margin-left:3px;font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-3);}
+.temp{font-family:var(--mono);font-size:9px;letter-spacing:.13em;padding:3px 8px;border-radius:4px;}
+.temp.HOT{color:#ff8f5e;background:rgba(217,89,38,.16);border:1px solid rgba(217,89,38,.5);}
+.temp.WARM{color:#e3b45f;background:rgba(217,164,65,.13);border:1px solid rgba(217,164,65,.42);}
+.demo-quote{
+  border-left:2px solid var(--s2);padding:2px 0 2px 10px;margin:0 0 10px;
+  font-size:12.5px;color:var(--text);
+}
+.demo-reason{font-size:12px;color:var(--text-2);margin:0;}
+.demo-cap{font-family:var(--mono);font-size:9.5px;color:var(--text-3);margin-top:10px;letter-spacing:.06em;}
+@media(max-width:620px){ .demo-view{grid-template-columns:1fr;} }
+
+.notice{
+  border:1px solid var(--line);border-radius:8px;
+  background:rgba(255,255,255,.022);
+  padding:11px 14px;margin-bottom:14px;
+  font-size:12.5px;color:var(--text-2);
+}
+.notice b{color:var(--text);font-weight:600;}
 
 /* ---- about / contact ---- */
 .about-in{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start;}
@@ -546,7 +649,7 @@ footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 30px;}
           <div>
             <p>I build the reporting stack a commercial insurance carrier runs on — <strong>SSIS</strong> packages that load broker and policy files, <strong>T-SQL</strong> stored procedures that calculate before anything lands, <strong>SSRS</strong> reports finance and underwriting drive with their own parameters, and <strong>Power BI</strong> models on the same governed data.</p>
             <p>Between every source and destination there is a reconciliation check — row counts and column sums that fail the load on a mismatch. It's the difference between a report that is populated and one that is correct.</p>
-            <p>Outside work I build complete systems: scrapers, pipelines, scoring engines and the interfaces on them. Several use an LLM as an actual component doing classification, extraction or vision work. <strong>Knowing where a model belongs in a system, and where it doesn't, is most of the value.</strong></p>
+            <p>Outside work I build complete systems that run without me &mdash; scrapers, pipelines, scoring engines and the interfaces on them. I build them <strong>with Claude</strong>, and in most of them Claude is also a working part of the system: classifying, extracting, reading photographs, writing the copy. <strong>Knowing where a model belongs in a system, and where it doesn't, is most of the value.</strong></p>
           </div>
         </div>
         <div class="facts" style="margin-top:16px;">
@@ -568,6 +671,13 @@ footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 30px;}
       <span class="right eyebrow" id="buildCount"></span>
     </div>
     <div class="pbody">
+      <div class="notice">
+        <b>Everything here is automated end to end</b>, and most of it is built with Claude &mdash;
+        both as the tool I write with and as a working part of the system, doing the classification,
+        extraction and vision jobs that rules cannot. Open a card to see exactly which steps run on
+        their own and where the model sits. The Facade Recon demo replays a real captured scan, so
+        clicking through it costs nothing and calls no API.
+      </div>
       <div class="builds" id="buildGrid"></div>
       <div class="empty" id="buildEmpty" hidden>No builds match these filters.</div>
     </div>
@@ -631,7 +741,7 @@ var T_MIN = m(2024,4), T_MAX = m(2026,9);   // Apr 2024 → Sep 2026 (exclusive 
 var ROLES = [
   {
     id:'berkley-bi', title:'Business Intelligence Developer',
-    company:'W. R. Berkley Corporation · Technical Operations Associate',
+    company:'W. R. Berkley Corporation',
     where:'Stamford, CT · Remote',
     start:m(2024,9), end:m(2026,9), current:true, cat:'data',
     when:'Sep 2024 — Present',
@@ -673,72 +783,149 @@ var ROLES = [
 
 var BUILDS = [
   {
-    name:'Market Catalyst Detector', cat:'data', status:'Running', live:true,
+    name:'Market Catalyst Detector', cat:'ai', status:'Running', live:true,
     start:m(2026,1), end:m(2026,9),
-    desc:'Reads financial news the second it publishes, scores each headline through 400+ regex rules plus an LLM classifier, and routes ranked alerts to Discord and an Interactive Brokers paper-trading bot.',
-    stats:[['50K+','trades backtested'],['400+','filter rules']],
-    tech:'Python · SQLite · Claude API · Polygon · IBKR · DigitalOcean'
-  },
-  {
-    name:'Business Knowledge Base', cat:'ai', status:'Complete',
-    start:m(2026,7), end:m(2026,9),
-    desc:'1,100 transcripts in, 660 structured business teardowns out. Parallel schema-validated agents did the extraction, and every case was graded on evidence quality so speculation never reached the summaries.',
-    stats:[['660','teardowns'],['1,100','transcripts']],
-    tech:'Python · Agent orchestration · Structured output · Static site'
-  },
-  {
-    name:'Facade Recon', cat:'ai', status:'Built',
-    start:m(2026,3), end:m(2026,6),
-    desc:'Finds commercial buildings that need facade cleaning without anyone driving around looking. Pulls Street View from a calculated camera bearing, gates by height with a cheap first pass, then scores condition with a vision model.',
-    stats:[['3–15','storeys targeted'],['$10','hard spend cap']],
-    tech:'FastAPI · SQLite · React · Leaflet · Claude Vision · Google Places'
-  },
-  {
-    name:'No-Website Finder', cat:'ai', status:'Live', live:true,
-    start:m(2026,6), end:m(2026,9),
-    desc:'Sweeps Google Places for local businesses that have a profile but no website, then drops them into a shared lead tracker with a multi-user status pipeline, filtering and CSV export.',
-    stats:[['1,700','leads loaded']],
-    tech:'Node · Express · MongoDB Atlas · Vercel · Google Places',
-    link:'https://no-website-finder.vercel.app', linkLabel:'Open the app'
-  },
-  {
-    name:'NJ → NYC Apartment Hunter', cat:'data', status:'Built',
-    start:m(2026,5), end:m(2026,7),
-    desc:'Scrapes four listing sites that actively do not want to be scraped, geocodes every result, and ranks them by real door-to-door commute time to three Manhattan destinations instead of map distance.',
-    stats:[['4','sources scraped'],['109','listings routed']],
-    tech:'Python · Playwright · SQLite · Flask · OSRM · Nominatim',
-    link:'https://github.com/Ralphhf/nj-nyc-apartment-hunter', linkLabel:'Source'
+    why:'Small caps often run hard in the first hour, and when I looked at why, it was almost always a news catalyst that had dropped minutes earlier. The edge is not the analysis &mdash; it is being early. So I automated the whole chain: reading the news, judging whether it matters, and acting on it.',
+    stats:[['50K+','trades backtested'],['400+','filter rules'],['24/5','unattended']],
+    tech:'Python · SQLite · Claude API · Polygon · IBKR · DigitalOcean',
+    ai:'Claude does the judgement calls regex cannot. A Haiku classifier decides whether a surviving headline is a real catalyst or dressed-up noise, estimates the size of private companies named in it, and writes the plain-English summary that goes out with the alert.',
+    pipeline:[
+      ['Watch','Polls the Polygon news API plus GlobeNewswire and PR Newswire feeds continuously, 5am to 5pm ET.','auto'],
+      ['Deduplicate','Matches titles across sources, and reloads the day\u2019s sent alerts on restart so a crash never resends.','auto'],
+      ['Block bad sources','Drops publishers that measured 70\u201384% junk during testing, before any further work.','auto'],
+      ['Regex gate','400+ patterns kill routine filings, dividend notices, law-firm spam and \u201Cbest stocks to buy\u201D opinion pieces.','auto'],
+      ['Claude judges the rest','Whatever regex cannot decide goes to a Haiku classifier: real catalyst, or noise?','claude'],
+      ['Enrich','Pulls market cap, price, float and volume; Claude sizes any private partner named and writes a one-line summary.','claude'],
+      ['Score and rate','Partner-to-company market-cap ratio sets a one-to-three-star conviction rating.','auto'],
+      ['Alert','Posts a Discord embed with the score breakdown, exit plan and article link.','auto'],
+      ['Trade','Routes to an Interactive Brokers paper account and manages a \u22123% trailing stop.','auto'],
+      ['Learn','Logs every alert and prices the outcome against 1-second bars, so the strategy keeps re-tuning on its own history.','auto']
+    ],
+    links:[['','Private &mdash; runs on my own server','off']]
   },
   {
     name:'AI Website Generator', cat:'ai', status:'Built',
     start:m(2025,12), end:m(2026,3),
-    desc:'Takes a business with a Google profile and no website and produces a finished one — copy, layout and imagery generated to brief, then committed to its own repository and deployed.',
-    stats:[],
-    tech:'Next.js · LLM generation · GitHub API · Vercel'
+    why:'Building a small business site by hand took me a couple of days, and that made the work barely worth quoting. If the process is the same every time, it should not need me sitting in the chair &mdash; so I automated the entire thing, right down to opening the editor.',
+    stats:[['~2 days','&rarr; one command'],['10+','sites generated']],
+    tech:'Next.js · TypeScript · Tailwind · Claude Code · GitHub API · Vercel',
+    ai:'Claude Code is the builder, not an assistant. The script hands it a pre-written prompt carrying the business brief and it writes the pages, the copy and the components itself &mdash; then the script takes over again to build and deploy.',
+    pipeline:[
+      ['Pick the business','Pulls the Google Places profile &mdash; name, trade, address, hours, reviews, photos.','auto'],
+      ['Write the brief','Turns that profile into a design brief and picks a visual direction suited to the trade.','auto'],
+      ['Scaffold','Copies the Next.js starter and zips it out into a fresh project folder.','auto'],
+      ['Open the tools','Launches VS Code on the folder and opens a terminal inside it.','auto'],
+      ['Call Claude','Fires Claude Code with the default prompt plus the brief. It writes the whole site.','claude'],
+      ['Build','Installs, type-checks and builds; failures get fed back for a fix.','auto'],
+      ['Ship','Creates the GitHub repository, pushes, and deploys to Vercel.','auto'],
+      ['Hand back','Returns the live URL, ready to attach to the lead record.','auto']
+    ],
+    links:[['https://github.com/Ralphhf/website-generator','Source',''],
+           ['https://github.com/Ralphhf?tab=repositories','Generated sites on GitHub','']]
   },
   {
-    name:'NewJersey Residence', cat:'web', status:'Live', live:true,
-    start:m(2026,7), end:m(2026,8),
-    desc:'A pitch demo for a luxury brokerage: a 301-frame cinematic property tour scrubbed by scroll position on a canvas, with a sliding-window frame loader because holding every decoded frame crashed real phones.',
-    stats:[['301','frames'],['4K','upscaled master']],
-    tech:'Canvas · WebP · ffmpeg · GitHub Pages',
-    link:'https://ralphhf.github.io/newjerseyresidence-demo/', linkLabel:'View the tour'
-  },
-  {
-    name:'Bagline', cat:'web', status:'Prototype',
+    name:'No-Website Finder', cat:'data', status:'Live', live:true,
     start:m(2026,6), end:m(2026,9),
-    desc:'A pure-skill cornhole game with no random number generator anywhere in it — every throw is decided by player input alone, and the physics are deterministic and test-covered.',
-    stats:[['0','RNG calls']],
-    tech:'PWA · Vanilla JS · Deterministic physics · No build step'
+    why:'I could build websites but I had no way to find people who needed one. Cold-calling at random is a waste of a day. A business with a Google profile and no website is already telling you it has a gap &mdash; so I automated finding them.',
+    stats:[['1,700','leads loaded'],['~19','business types swept']],
+    tech:'Node · Express · MongoDB Atlas · Vercel · Google Places API',
+    ai:null,
+    pipeline:[
+      ['Grid the map','Splits a roughly 30-minute drive around New Brunswick into a grid of search points.','auto'],
+      ['Sweep Places','Queries about 19 business types at every point on the grid.','auto'],
+      ['Keep the gaps','Keeps only businesses with no website field, filters out chains, dedupes by place id.','auto'],
+      ['Cap the spend','A hard call cap stops the run before the API bill can get away from me.','auto'],
+      ['Load','Seeds MongoDB Atlas and the shared tracker in one step.','auto'],
+      ['Work the list','Multi-user statuses, filters, tap-to-call and CSV export &mdash; this part is meant to be human.','me']
+    ],
+    links:[['https://no-website-finder.vercel.app','Open the live app','']]
+  },
+  {
+    name:'Facade Recon', cat:'ai', status:'Built',
+    start:m(2026,3), end:m(2026,6),
+    why:'A friend of mine runs a drone business cleaning building windows and walls, and he was finding work by driving around looking for dirty buildings. That is a search problem, not a driving problem. I built something that finds them for him and tells him which ones are worth a call.',
+    stats:[['380','candidates found'],['47','analysed by AI'],['$5.01','total spend']],
+    tech:'FastAPI · SQLite · React · Leaflet · Claude vision · Google Places · Street View',
+    ai:'Claude does the looking. A cheap single-image call first throws out anything outside 3\u201315 storeys, then a full vision pass scores dirtiness, names the soiling types and problem zones by direction and floor, judges drone suitability, and writes an opening line about that specific building.',
+    pipeline:[
+      ['Discover','Google Places sweep for commercial buildings inside a target radius.','auto'],
+      ['Aim the camera','Computes the bearing from the street to the building and pulls Street View at that heading.','auto'],
+      ['Height gate','One cheap Claude call drops anything outside 3\u201315 storeys before spending on full analysis.','claude'],
+      ['Capture angles','Two further headings on whatever survives the gate.','auto'],
+      ['Score the facade','Claude rates dirtiness, material, soiling types, problem zones, drone suitability and access difficulty.','claude'],
+      ['Write the pitch','Claude drafts a short opener naming what is actually visible on that building.','claude'],
+      ['Guard the budget','The scan halts itself before it crosses the spend cap.','auto'],
+      ['Rank','HOT, WARM and COLD onto a map and into a lead workspace.','auto']
+    ],
+    links:null,
+    demo:'facade'
+  },
+  {
+    name:'Business Knowledge Base', cat:'ai', status:'Complete',
+    start:m(2026,7), end:m(2026,9),
+    why:'I wanted the mechanics of how people actually built profitable businesses, not the motivational version. That is buried in a thousand hours of podcasts nobody has time to sit through. Reading them is a machine\u2019s job.',
+    stats:[['1,100','transcripts pulled'],['660','teardowns extracted'],['15','playbooks built']],
+    tech:'Python · Claude agents · Structured output · Static site generation',
+    ai:'Parallel Claude agents do the extraction, each forced into a strict schema so the output is data rather than prose. Every case is then graded on evidence quality, and roughly a quarter get marked too weak to build from &mdash; which is the part that makes the rest trustworthy.',
+    pipeline:[
+      ['Enumerate','Lists the full back catalogue of a channel.','auto'],
+      ['Pull transcripts','Captions fetched directly, with IP rotation when the source starts throttling.','auto'],
+      ['Extract','One Claude agent per transcript, each returning a validated structured record.','claude'],
+      ['Grade the evidence','Every case tagged first-hand, second-hand or speculation, and weighted accordingly.','claude'],
+      ['Batch and recover','Runs in batches of 40 with a salvage pass, so a multi-million-token job survives interruption.','auto'],
+      ['Publish','Builds a searchable static site from the dataset for free, no tokens spent.','auto']
+    ],
+    links:[['','Personal knowledge base &mdash; not public','off']]
+  },
+  {
+    name:'NJ &rarr; NYC Apartment Hunter', cat:'data', status:'Built',
+    start:m(2026,5), end:m(2026,7),
+    why:'I was looking for a place around Hoboken so I could be close to the city, and every listing site ranks by price or distance &mdash; neither of which is what you actually live with. What matters is how long it takes to get to work. So I built something that ranks by that instead.',
+    stats:[['4','sites scraped'],['109','listings routed'],['3','commute targets']],
+    tech:'Python · Playwright · SQLite · Flask · OSRM · Nominatim',
+    ai:null,
+    pipeline:[
+      ['Scrape four sites','Craigslist through its JSON API, RentHop past Cloudflare with a stealth browser, Apartments.com and Zillow through a proxy.','auto'],
+      ['Geocode','Strips unit suffixes that break the geocoder, then prunes anything outside the Hudson corridor.','auto'],
+      ['Route','Real door-to-door time to the World Trade Center, Times Square and Grand Central.','auto'],
+      ['Rank and browse','A local app sorted by commute rather than by price.','me']
+    ],
+    links:[['https://github.com/Ralphhf/nj-nyc-apartment-hunter','Source','']]
   },
   {
     name:'Client sites', cat:'web', status:'Shipped',
     start:m(2025,12), end:m(2026,8),
-    desc:'A run of small business and non-profit sites — plumbing and home-improvement firms, a jeweller, a realty mockup and a prison-ministry site with donations and an admin dashboard.',
-    stats:[['10+','sites']],
+    why:'The delivery end of the lead pipeline &mdash; the businesses the finder turns up, and a prison-ministry site with donations and an admin dashboard.',
+    stats:[['10+','sites shipped']],
     tech:'Next.js · TypeScript · Tailwind · Supabase · Stripe · Vercel',
-    link:'https://github.com/Ralphhf', linkLabel:'Browse GitHub'
+    ai:null,
+    pipeline:null,
+    links:[['https://ralphhf.github.io/letters-of-hope/v3/','Live design draft',''],
+           ['https://github.com/Ralphhf?tab=repositories','Repositories','']]
   }
+];
+
+var FACADE_DEMO = [
+  { img:'demo/lead-1.jpg', name:'Residence Inn by Marriott Philadelphia Center City',
+    addr:'One East Penn Square, Philadelphia', temp:'HOT',
+    dirt:6, storeys:11, drone:7, material:'stone',
+    pitch:'The tan brick flank above your parking lot has heavy vertical grime streaking running floors 2\u20139 on the south side \u2014 clearly visible where it meets the older stone tower. We clean facades like this by drone, no scaffold or lot closure.',
+    reason:'The large windowless tan brick/stone flank shows genuine gravity-following vertical grime concentrated on the lower-mid floors, consistent with atmospheric soiling rather than reflection. Height sits in the drone sweet spot, but tight adjacency to neighbouring towers, a fenced lot and street obstructions make rope access painful, raising drone value.' },
+  { img:'demo/lead-2.jpg', name:'Element by Marriott Philadelphia Downtown',
+    addr:'1441 Chestnut Street, Philadelphia', temp:'WARM',
+    dirt:6, storeys:5, drone:5, material:'mixed',
+    pitch:'Your arched-entry building shows clear atmospheric grime darkening the upper brick and the ornate terracotta loggia below the copper cornice \u2014 soiling that\u2019s gravity-streaked, not reflection. We clean facades like yours by drone, no scaffold or lane closure.',
+    reason:'The masonry and terracotta mid-rise shows genuine atmospheric darkening on the upper brick and ornate loggia that follows ledges and gravity, not sky reflection. Suitability is held to 5 because the delicate carved terracotta, arched stone entry and tightly adjacent taller towers raise fragility and obstruction risk.' },
+  { img:'demo/lead-3.jpg', name:'UrHomeInPhilly',
+    addr:'1512 Sansom Street, Philadelphia', temp:'WARM',
+    dirt:6, storeys:3, drone:4, material:'mixed',
+    pitch:'Your building\u2019s rear alley facade is carrying heavy graffiti and grime across the lower stucco, plus oxidation streaking on the kitchen-exhaust ductwork \u2014 far dirtier than the brick streetfront. We can clean both elevations without scaffolding the alley.',
+    reason:'The rear alley elevation is clearly the dirtiest: tagged stucco, atmospheric grime and stained ductwork, while the front brick and storefronts are only lightly soiled. Suitability is dragged down by the tight alley with overhead ducts and a 3-storey height below the drone sweet spot.' },
+  { img:'demo/lead-4.jpg', name:'Inn At The Union League',
+    addr:'1450 Sansom Street, Philadelphia', temp:'WARM',
+    dirt:6, storeys:5, drone:4, material:'mixed',
+    pitch:'Your brownstone front stair and lintels on the upper red-brick floors are carrying heavy atmospheric grime and dark streaking \u2014 and the alley brick by the bins is greying fast. Cleaning that ornate balustrade without scaffold in the street is exactly our lane.',
+    reason:'Clear atmospheric grime and dark streaking on the brownstone balustrade and around the upper red-brick window lintels drive a 6; this reads as real soiling following ledges and ornament, not reflections. Traditional access is hard given the narrow alley, curved grand stair and street-permit needs.' }
 ];
 
 // Self-assessed share of hands-on time. Stacked to 100 per quarter.
@@ -1231,21 +1418,107 @@ function renderBuilds(){
     var card = document.createElement('article');
     card.className = 'build';
     card.style.animationDelay = (i * 36) + 'ms';
+
     var stats = b.stats.length
       ? '<div class="stats">' + b.stats.map(function(st){
           return '<div class="stat"><div class="n">'+st[0]+'</div><div class="l">'+st[1]+'</div></div>';
         }).join('') + '</div>'
       : '';
+
+    var pipe = b.pipeline
+      ? '<div class="dsec"><h4>What runs without me</h4><ol class="pipe">' +
+        b.pipeline.map(function(p){
+          var by = p[2] === 'claude' ? '<span class="by claude">Claude</span>'
+                 : p[2] === 'me'     ? '<span class="by me">Me</span>'
+                 : '<span class="by">Auto</span>';
+          return '<li><span class="sd"><span class="pname">'+p[0]+'</span>'+by+'<br>'+p[1]+'</span></li>';
+        }).join('') + '</ol></div>'
+      : '';
+
+    var ai = b.ai
+      ? '<div class="dsec"><h4>Where the AI does the work</h4><div class="aibox">'+b.ai+'</div></div>'
+      : '';
+
+    var links = b.links && b.links.length
+      ? '<div class="links">' + b.links.map(function(l){
+          if (l[2] === 'off') return '<span class="lnk off">'+l[1]+'</span>';
+          var cls = l[2] === 'demo' ? 'lnk demo' : 'lnk';
+          var tgt = l[0].charAt(0) === '#' ? '' : ' target="_blank" rel="noopener"';
+          return '<a class="'+cls+'" href="'+l[0]+'"'+tgt+'>'+l[1]+' &rarr;</a>';
+        }).join('') + '</div>'
+      : '';
+
+    var demo = b.demo === 'facade' ? buildFacadeDemo() : '';
+
     card.innerHTML =
       '<div class="bt">' +
         '<span class="cat" style="background:'+CAT[b.cat].color+'"></span>' +
         '<h3>'+b.name+'</h3>' +
         '<span class="st'+(b.live ? ' live' : '')+'">'+b.status+'</span>' +
       '</div>' +
-      '<p>'+b.desc+'</p>' + stats +
+      '<p class="why">'+b.why+'</p>' + stats +
       '<div class="tk">'+b.tech+'</div>' +
-      (b.link ? '<a class="go" href="'+b.link+'" target="_blank" rel="noopener">'+b.linkLabel+' &rarr;</a>' : '');
+      '<button class="morebtn" type="button" aria-expanded="false">' +
+        '<span class="chev" aria-hidden="true">&#9656;</span>' +
+        '<span class="mtxt">' + (b.pipeline ? 'How it is automated' : 'More') + '</span>' +
+      '</button>' +
+      '<div class="detail"><div class="detail-in">' + pipe + ai + demo + links + '</div></div>';
+
+    var btn = card.querySelector('.morebtn');
+    btn.addEventListener('click', function(){
+      var open = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.querySelector('.mtxt').textContent =
+        open ? 'Hide' : (b.pipeline ? 'How it is automated' : 'More');
+    });
+
+    if (b.demo === 'facade') wireFacadeDemo(card);
     host.appendChild(card);
+  });
+}
+
+/* ---- replay demo: real rows from the Facade Recon database ---- */
+function buildFacadeDemo(){
+  return '<div class="dsec" id="demo-facade"><h4>Real output &mdash; a scan of central Philadelphia</h4>' +
+    '<div class="demo">' +
+      '<div class="demo-thumbs" role="group" aria-label="Choose a building">' +
+        FACADE_DEMO.map(function(d, i){
+          return '<button type="button" data-lead="'+i+'" aria-pressed="'+(i===0)+'">' +
+                 '<img src="'+d.img+'" alt="'+d.name+'" loading="lazy"></button>';
+        }).join('') +
+      '</div>' +
+      '<div class="demo-view" data-view></div>' +
+      '<p class="demo-cap">Captured output from an actual scan &mdash; 380 candidates found, 47 analysed, $5.01 spent before the budget guard stopped it. Nothing here calls an API.</p>' +
+    '</div></div>';
+}
+
+function paintFacade(card, i){
+  var d = FACADE_DEMO[i];
+  card.querySelector('[data-view]').innerHTML =
+    '<img class="shot" src="'+d.img+'" alt="Street View of '+d.name+'" loading="lazy">' +
+    '<div>' +
+      '<p class="demo-name">'+d.name+'</p>' +
+      '<p class="demo-addr">'+d.addr+'</p>' +
+      '<div class="scores">' +
+        '<span class="temp '+d.temp+'">'+d.temp+'</span>' +
+        '<span class="score"><span class="n">'+d.dirt+'</span><span class="l">/10 dirty</span></span>' +
+        '<span class="score"><span class="n">'+d.storeys+'</span><span class="l">storeys</span></span>' +
+        '<span class="score"><span class="n">'+d.drone+'</span><span class="l">/10 drone fit</span></span>' +
+        '<span class="score"><span class="n" style="font-size:11px">'+d.material+'</span><span class="l">facade</span></span>' +
+      '</div>' +
+      '<p class="demo-quote">&ldquo;'+d.pitch+'&rdquo;</p>' +
+      '<p class="demo-reason"><b style="color:var(--text)">Why it scored that way:</b> '+d.reason+'</p>' +
+    '</div>';
+  Array.prototype.forEach.call(card.querySelectorAll('[data-lead]'), function(b){
+    b.setAttribute('aria-pressed', String(+b.dataset.lead === i));
+  });
+}
+
+function wireFacadeDemo(card){
+  paintFacade(card, 0);
+  card.addEventListener('click', function(e){
+    var b = e.target.closest('[data-lead]');
+    if (b) paintFacade(card, +b.dataset.lead);
   });
 }
 
